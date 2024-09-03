@@ -17,7 +17,7 @@ namespace Utils
 
         public DataBaseAccess()
         {
-            connection = new SqlConnection("server=localhost,1434;database=POKEDEX_DB;integrated security=false; user id=sa;password=Alejo4321");
+            connection = new SqlConnection("");
             command = new SqlCommand();
 
         }
