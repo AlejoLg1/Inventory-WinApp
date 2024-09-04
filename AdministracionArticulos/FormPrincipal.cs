@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace AdministracionArticulos
 {
-    public partial class Form1 : Form
+    public partial class formPrincipal : Form
     {
-        public Form1()
+        public formPrincipal()
         {
             InitializeComponent();
+        }
+
+        private void formPrincipal_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
