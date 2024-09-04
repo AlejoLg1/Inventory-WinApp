@@ -53,7 +53,7 @@
             this.MenuCategoria});
             this.MSprincipal.Location = new System.Drawing.Point(0, 0);
             this.MSprincipal.Name = "MSprincipal";
-            this.MSprincipal.Size = new System.Drawing.Size(718, 28);
+            this.MSprincipal.Size = new System.Drawing.Size(832, 28);
             this.MSprincipal.TabIndex = 0;
             this.MSprincipal.Text = "menuStrip1";
             // 
@@ -145,11 +145,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(718, 450);
+            this.ClientSize = new System.Drawing.Size(832, 572);
             this.Controls.Add(this.MSprincipal);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.MainMenuStrip = this.MSprincipal;
             this.Name = "Form1";
             this.Text = "Form1";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.MSprincipal.ResumeLayout(false);
             this.MSprincipal.PerformLayout();
             this.ResumeLayout(false);
