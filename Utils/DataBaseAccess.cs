@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 
 
 
@@ -17,9 +19,9 @@ namespace Utils
 
         public DataBaseAccess()
         {
-            connection = new SqlConnection("");
+            string connectionString = ConfigurationManager.ConnectionStrings["CatalogoDbConnectionString"].ConnectionString;
+            connection = new SqlConnection(connectionString);
             command = new SqlCommand();
-
         }
 
         public void setQuery(string Query)
