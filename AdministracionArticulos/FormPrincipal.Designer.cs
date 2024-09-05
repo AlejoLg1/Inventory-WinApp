@@ -211,7 +211,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "formPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = " n";
+            this.Text = "Panel de Control";
             this.Load += new System.EventHandler(this.formPrincipal_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgArticulos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgMarcas)).EndInit();
