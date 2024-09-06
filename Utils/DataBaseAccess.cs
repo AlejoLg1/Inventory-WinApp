@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,10 +18,14 @@ namespace Utils
         private SqlCommand command;
         private SqlDataReader reader;
 
+        public SqlDataReader Reader
+        {
+            get { return reader; }
+        }
+
         public DataBaseAccess()
         {
-            string connectionString = ConfigurationManager.ConnectionStrings["CatalogoDbConnectionString"].ConnectionString;
-            connection = new SqlConnection(connectionString);
+            connection = new SqlConnection("");
             command = new SqlCommand();
         }
 
