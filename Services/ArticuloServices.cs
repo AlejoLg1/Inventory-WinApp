@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+<<<<<<< Updated upstream
 using System.Data.SqlClient;
 using System.Data.SqlTypes;
 using System.Linq;
@@ -7,11 +8,19 @@ using System.Text;
 using System.Threading.Tasks;
 using Models;
 using Utils;
+=======
+using System.Data.Common;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Configuration;
+>>>>>>> Stashed changes
 
 namespace Services
 {
     public class ArticuloServices
     {
+<<<<<<< Updated upstream
         private DataBaseAccess DB = new DataBaseAccess();
 
         public List<Articulo> listar()
@@ -75,5 +84,8 @@ namespace Services
                 articulo.Categoria.Descripcion = string.Empty;
             }
         }
+=======
+        
+>>>>>>> Stashed changes
     }
 }
