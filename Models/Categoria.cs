@@ -7,11 +7,15 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    internal class Categoria
+    public class Categoria
     {
         public int Id { get; set; }
 
-        [DisplayName("Nombre")]
-        public string Nombre { get; set; }
+        public string Descripcion { get; set; }
+
+        public override string ToString()
+        {
+            return Descripcion;
+        }
     }
 }

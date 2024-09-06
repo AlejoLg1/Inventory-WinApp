@@ -19,11 +19,9 @@ namespace Models
         [DisplayName("Descripción")]
         public string Descripcion { get; set; }
 
-        [DisplayName("Marca")]
-        public int IdMarca { get; set; }
+        public Marca Marca { get; set; }
 
-        [DisplayName("Categoria")]
-        public int IdCategoria { get; set; }
+        public Categoria Categoria { get; set; }
 
         public string Imagen { get; set; }
 
