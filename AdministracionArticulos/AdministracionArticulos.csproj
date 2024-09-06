@@ -125,10 +125,6 @@
       <Project>{379cae76-60b8-4ed7-9a8f-98d43af4f43c}</Project>
       <Name>Services</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Settings\Settings.csproj">
-      <Project>{3cafa5ce-9d45-471c-b783-aaf88bc7a6b8}</Project>
-      <Name>Settings</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

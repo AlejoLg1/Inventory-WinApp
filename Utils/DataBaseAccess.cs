@@ -25,7 +25,9 @@ namespace Utils
 
         public DataBaseAccess()
         {
-            connection = new SqlConnection("");
+        
+            string connectionString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
+            connection = new SqlConnection(connectionString);
             command = new SqlCommand();
         }
 
