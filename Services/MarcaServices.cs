@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Services
 {
-    internal class MarcaServices
+    public class MarcaServices
     {
 
     }
