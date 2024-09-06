@@ -364,3 +364,4 @@ FodyWeavers.xsd
 
 # appSettings - DB key by env
 /Settings/App.config
+/AdministracionArticulos/App.config
