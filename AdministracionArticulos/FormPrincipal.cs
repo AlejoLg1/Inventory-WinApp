@@ -15,7 +15,9 @@ namespace AdministracionArticulos
     public partial class formPrincipal : Form
     {
         private List<Articulo> listArticulos;
-        private bool Marca; 
+        private bool Marca;
+
+        private List<Categoria> listCategorias;
 
         public formPrincipal()
         {
@@ -95,6 +97,11 @@ namespace AdministracionArticulos
                 dgArticulos.Columns["Id"].Visible = false;
                 dgArticulos.Columns["Imagen"].Visible = false;
                 AjustarDgArticulosView(dgArticulos);
+
+                listCategorias = categoriaService.listar();
+                dgCategorias.DataSource = listCategorias;
+                AjustarDgArticulosView(dgCategorias);
+
             }
             catch (Exception ex)
             {
@@ -124,5 +131,6 @@ namespace AdministracionArticulos
             }
         }
 
+        
     }
 }
