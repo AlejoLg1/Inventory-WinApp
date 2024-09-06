@@ -32,7 +32,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -48,13 +47,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< Updated upstream
-=======
-    <ProjectReference Include="..\AdministracionArticulos\AdministracionArticulos.csproj">
-      <Project>{8186ae63-ee68-4a54-a07d-809529f5249b}</Project>
-      <Name>AdministracionArticulos</Name>
-    </ProjectReference>
->>>>>>> Stashed changes
     <ProjectReference Include="..\Models\Models.csproj">
       <Project>{71655a7f-5b4c-4442-92ff-86fb2f5f9127}</Project>
       <Name>Models</Name>
