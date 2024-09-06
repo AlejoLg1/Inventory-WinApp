@@ -7,11 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Models;
+using Services;
 
 namespace AdministracionArticulos
 {
     public partial class formPrincipal : Form
     {
+        private List<Articulo> listArticulos;
         private bool Marca; 
 
         public formPrincipal()
@@ -21,6 +24,7 @@ namespace AdministracionArticulos
 
         private void formPrincipal_Load(object sender, EventArgs e)
         {
+            cargarGrids();
             Marca = false; 
         }
 
@@ -77,5 +81,48 @@ namespace AdministracionArticulos
                 Marca = false; 
             }
         }
+
+        private void cargarGrids()
+        {
+            ArticuloServices articuloService = new ArticuloServices();
+            CategoriaServices categoriaService = new CategoriaServices();
+            MarcaServices marcaService = new MarcaServices();
+
+            try
+            {
+                listArticulos = articuloService.listar();
+                dgArticulos.DataSource = listArticulos;
+                dgArticulos.Columns["Id"].Visible = false;
+                dgArticulos.Columns["Imagen"].Visible = false;
+                AjustarDgArticulosView(dgArticulos);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void AjustarDgArticulosView(DataGridView dataGridView)
+        {
+            int recordCount = dataGridView.Rows.Count;
+            int maxVisibleRows = 6;
+            int rowHeight = dataGridView.RowTemplate.Height;
+            int headerHeight = dataGridView.ColumnHeadersHeight;
+
+
+            int totalHeight = (recordCount > maxVisibleRows ? maxVisibleRows : recordCount) * rowHeight + headerHeight + 2;
+
+            dataGridView.Height = totalHeight;
+
+            if (recordCount > maxVisibleRows)
+            {
+                dataGridView.ScrollBars = ScrollBars.Vertical;
+            }
+            else
+            {
+                dataGridView.ScrollBars = ScrollBars.None;
+            }
+        }
+
     }
 }
