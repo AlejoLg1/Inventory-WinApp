@@ -15,9 +15,9 @@ namespace AdministracionArticulos
     public partial class formPrincipal : Form
     {
         private List<Articulo> listArticulos;
-        private bool Marca;
-
         private List<Categoria> listCategorias;
+        private List<Marca> listMarca;
+        private bool Marca;
 
         public formPrincipal()
         {
@@ -67,6 +67,10 @@ namespace AdministracionArticulos
                 listCategorias = categoriaService.listar();
                 dgCategorias.DataSource = listCategorias;
                 AjustarDgArticulosView(dgCategorias);
+
+                listMarca = marcaService.listar();
+                dgMarcas.DataSource = listMarca;
+                AjustarDgArticulosView(dgMarcas);
 
             }
             catch (Exception ex)
