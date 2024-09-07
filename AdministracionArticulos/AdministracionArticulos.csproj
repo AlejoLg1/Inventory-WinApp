@@ -47,41 +47,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormAgregarArticulo.cs">
+    <Compile Include="FormArticulo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormAgregarArticulo.Designer.cs">
-      <DependentUpon>FormAgregarArticulo.cs</DependentUpon>
+    <Compile Include="FormArticulo.Designer.cs">
+      <DependentUpon>FormArticulo.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormAgregarMarca.cs">
+    <Compile Include="FormCategoria.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormAgregarMarca.Designer.cs">
-      <DependentUpon>FormAgregarMarca.cs</DependentUpon>
+    <Compile Include="FormCategoria.Designer.cs">
+      <DependentUpon>FormCategoria.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormEliminarArticulo.cs">
+    <Compile Include="FormMarca.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormEliminarArticulo.Designer.cs">
-      <DependentUpon>FormEliminarArticulo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormEliminarMarca.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormEliminarMarca.Designer.cs">
-      <DependentUpon>FormEliminarMarca.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormModificarArticulo.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormModificarArticulo.Designer.cs">
-      <DependentUpon>FormModificarArticulo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormModificarMarca.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormModificarMarca.Designer.cs">
-      <DependentUpon>FormModificarMarca.cs</DependentUpon>
+    <Compile Include="FormMarca.Designer.cs">
+      <DependentUpon>FormMarca.cs</DependentUpon>
     </Compile>
     <Compile Include="FormPrincipal.cs">
       <SubType>Form</SubType>

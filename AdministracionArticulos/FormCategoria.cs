@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace AdministracionArticulos
 {
-    public partial class FormModificarArticulo : Form
+    public partial class FormCategoria : Form
     {
-        public FormModificarArticulo()
+        public FormCategoria()
         {
             InitializeComponent();
         }
