@@ -363,4 +363,3 @@ MigrationBackup/
 FodyWeavers.xsd
 
 # appSettings - DB key by env
-# /AdministracionArticulos/App.config
