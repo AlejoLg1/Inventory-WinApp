@@ -14,7 +14,7 @@ namespace Services
 {
     public class CategoriaServices
     {
-          private DataBaseAccess dato = new DataBaseAccess();
+        private DataBaseAccess dato = new DataBaseAccess();
         public List<Categoria> listar()
         {
             List<Categoria> lista = new List<Categoria>();
@@ -34,6 +34,66 @@ namespace Services
 
 
                 return lista;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                dato.CloseConnection();
+            }
+        }
+
+        private void add(Categoria NewCategoria)
+        {
+            try
+            {
+                dato.setQuery("INSERT into CATEGORIAS (Descripcion) values(@Descripcion)");
+                dato.setParameter("@Descricion", NewCategoria.Descripcion);
+
+                dato.excecuteAction();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                dato.CloseConnection();
+            }
+        }
+
+        private void modify(Categoria categoria)
+        {
+            try
+            {
+                dato.setQuery("UPDATE CATEGORIAS Descripcion = @Descripcion where id = @Id");
+                dato.setParameter("@Descripcion", categoria.Descripcion);
+
+                dato.excecuteAction();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                dato.CloseConnection();
+            }
+        }
+
+        private void delete(Categoria categoria)
+        {
+            try
+            {
+              dato.setQuery("DELETE from CATEGORIAS where id = @Id");
+              dato.setParameter("@Id", categoria.Id);
+
+              dato.excecuteAction();
             }
             catch (Exception ex)
             {

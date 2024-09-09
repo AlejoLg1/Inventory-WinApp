@@ -11,6 +11,7 @@ namespace Models
     {
         public int Id { get; set; }
 
+        [DisplayName("Descripcón")]
         public string Descripcion { get; set; }
 
         public override string ToString()
