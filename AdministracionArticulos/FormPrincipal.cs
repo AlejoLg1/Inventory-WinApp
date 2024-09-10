@@ -47,6 +47,8 @@ namespace AdministracionArticulos
             else
             {
                 //Agregar Categoría
+                FormCategoria categoria = new FormCategoria();
+                categoria.ShowDialog();
             }
             cargarGrids();
         }
@@ -66,7 +68,10 @@ namespace AdministracionArticulos
             }
             else
             {
-                //Modificar Categoría
+                Categoria selectedCat;
+                selectedCat = (Categoria)dgCategorias.CurrentRow.DataBoundItem;
+                FormCategoria categoria = new FormCategoria(selectedCat);
+                categoria.ShowDialog();
             }
             cargarGrids();
         }
@@ -83,7 +88,7 @@ namespace AdministracionArticulos
             }
             else
             {
-                //Eliminar Categoría
+                deleteCategoria();
             }
             cargarGrids();
         }
@@ -230,6 +235,28 @@ namespace AdministracionArticulos
                 if (response == DialogResult.Yes)
                 {
                     service.delete(selectedArt.Id);
+                    cargarGrids();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void deleteCategoria()
+        {
+            CategoriaServices service = new CategoriaServices();
+            Categoria selectedCat;
+
+            try
+            {
+                selectedCat = (Categoria)dgCategorias.CurrentRow.DataBoundItem;
+                DialogResult response = MessageBox.Show($"¿Éstá seguro de eliminar la categoria '{selectedCat.Descripcion}' con Id '{selectedCat.Id}'?", "Eliminar Categoria", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (response == DialogResult.Yes)
+                {
+                    service.delete(selectedCat.Id);
                     cargarGrids();
                 }
             }
