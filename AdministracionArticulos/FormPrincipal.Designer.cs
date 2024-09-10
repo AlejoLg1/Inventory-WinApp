@@ -204,7 +204,7 @@
             // pbPcArticulos
             // 
             this.pbPcArticulos.Location = new System.Drawing.Point(230, 297);
-            this.pbPcArticulos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pbPcArticulos.Margin = new System.Windows.Forms.Padding(2);
             this.pbPcArticulos.Name = "pbPcArticulos";
             this.pbPcArticulos.Size = new System.Drawing.Size(204, 196);
             this.pbPcArticulos.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -214,7 +214,7 @@
             // nudImagenesArticulos
             // 
             this.nudImagenesArticulos.Location = new System.Drawing.Point(286, 497);
-            this.nudImagenesArticulos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.nudImagenesArticulos.Margin = new System.Windows.Forms.Padding(2);
             this.nudImagenesArticulos.Name = "nudImagenesArticulos";
             this.nudImagenesArticulos.ReadOnly = true;
             this.nudImagenesArticulos.Size = new System.Drawing.Size(90, 20);
@@ -225,8 +225,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.AntiqueWhite;
-            this.ClientSize = new System.Drawing.Size(664, 609);
+            this.ClientSize = new System.Drawing.Size(664, 541);
             this.Controls.Add(this.nudImagenesArticulos);
             this.Controls.Add(this.pbPcArticulos);
             this.Controls.Add(this.btEliminar);
@@ -243,7 +244,7 @@
             this.Controls.Add(this.dgArticulos);
             this.Controls.Add(this.lbArticulos);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "formPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Panel de Control";

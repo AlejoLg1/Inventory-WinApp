@@ -51,7 +51,7 @@ namespace Services
             try
             {
                 dato.setQuery("INSERT into CATEGORIAS (Descripcion) values(@Descripcion)");
-                dato.setParameter("@Descricion", NewCategoria.Descripcion);
+                dato.setParameter("@Descripcion", NewCategoria.Descripcion);
 
                 dato.excecuteAction();
             }
@@ -70,8 +70,9 @@ namespace Services
         {
             try
             {
-                dato.setQuery("UPDATE CATEGORIAS Descripcion = @Descripcion where id = @Id");
+                dato.setQuery("UPDATE CATEGORIAS set Descripcion = @Descripcion where id = @Id");
                 dato.setParameter("@Descripcion", categoria.Descripcion);
+                dato.setParameter("@Id", categoria.Id);
 
                 dato.excecuteAction();
             }

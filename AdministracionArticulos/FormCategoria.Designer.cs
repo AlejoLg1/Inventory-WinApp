@@ -33,8 +33,6 @@
             this.lblAgregarCat = new System.Windows.Forms.Label();
             this.btnCancelarCategoria = new System.Windows.Forms.Button();
             this.btnAceptarCategoria = new System.Windows.Forms.Button();
-            this.dgvCategorias2 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCategorias2)).BeginInit();
             this.SuspendLayout();
             // 
             // txtDescripcionCat
@@ -91,22 +89,12 @@
             this.btnAceptarCategoria.UseVisualStyleBackColor = true;
             this.btnAceptarCategoria.Click += new System.EventHandler(this.btnAceptarCategoria_Click);
             // 
-            // dgvCategorias2
-            // 
-            this.dgvCategorias2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCategorias2.Location = new System.Drawing.Point(281, 25);
-            this.dgvCategorias2.Name = "dgvCategorias2";
-            this.dgvCategorias2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvCategorias2.Size = new System.Drawing.Size(240, 273);
-            this.dgvCategorias2.TabIndex = 24;
-            // 
             // FormCategoria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ClientSize = new System.Drawing.Size(533, 367);
-            this.Controls.Add(this.dgvCategorias2);
             this.Controls.Add(this.btnCancelarCategoria);
             this.Controls.Add(this.btnAceptarCategoria);
             this.Controls.Add(this.lblAgregarCat);
@@ -116,7 +104,7 @@
             this.Name = "FormCategoria";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormCategoria";
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCategorias2)).EndInit();
+            this.Load += new System.EventHandler(this.FormCategoria_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -128,6 +116,5 @@
         private System.Windows.Forms.Label lblAgregarCat;
         private System.Windows.Forms.Button btnCancelarCategoria;
         private System.Windows.Forms.Button btnAceptarCategoria;
-        private System.Windows.Forms.DataGridView dgvCategorias2;
     }
 }

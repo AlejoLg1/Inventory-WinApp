@@ -64,6 +64,33 @@ namespace AdministracionArticulos
             Close();
         }
 
-       
+        private void cargar()
+        {
+            CategoriaServices services = new CategoriaServices();
+
+            try
+            {
+                lblAgregarCat.Text = "Agregando Categoria";
+                btnAceptarCategoria.Text = "Agregar";
+                if (categoria != null) 
+                {
+                    lblAgregarCat.Text = "Modificando Categoria";
+                    btnAceptarCategoria.Text = "Modificar";
+                    txtDescripcionCat.Text = categoria.Descripcion;
+                }
+            }
+            catch (Exception ex)
+            {
+
+              throw ex;
+                    
+            }
+
+        }
+
+        private void FormCategoria_Load(object sender, EventArgs e)
+        {
+            cargar();
+        }
     }
 }
