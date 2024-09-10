@@ -41,7 +41,7 @@ namespace Services
                 dato.CloseConnection();
             }
         }
-          private void add(Marca newMarca)
+          public void add(Marca newMarca)
           {
               try
               {
@@ -61,12 +61,13 @@ namespace Services
               }
           }
 
-          private void modify(Marca marca)
+          public void modify(Marca marca)
           {
               try
               {
-                  dato.setQuery("UPDATE MARCAS Descripcion = @Descripcion where id = @Id");
+                  dato.setQuery("UPDATE MARCAS set Descripcion = @Descripcion where id = @Id");
                   dato.setParameter("@Descripcion", marca.Descripcion);
+                  dato.setParameter("@Id", marca.Id);
 
                   dato.excecuteAction();
               }

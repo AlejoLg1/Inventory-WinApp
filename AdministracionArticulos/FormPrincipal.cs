@@ -42,7 +42,8 @@ namespace AdministracionArticulos
             }
            else if (rdMarcas.Checked)
             {
-                //Agregar Marca
+                FormMarca marca = new FormMarca();
+                marca.ShowDialog();
             }
             else
             {
@@ -64,7 +65,10 @@ namespace AdministracionArticulos
             }
             else if (rdMarcas.Checked)
             {
-                //Modificar Marca
+                Marca selectedMarca;
+                selectedMarca = (Marca)dgMarcas.CurrentRow.DataBoundItem;
+                FormMarca marca = new FormMarca(selectedMarca);
+                marca.ShowDialog();
             }
             else
             {
