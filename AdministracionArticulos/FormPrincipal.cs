@@ -305,7 +305,7 @@ namespace AdministracionArticulos
             List<Articulo> listaFiltrada;
             string filtro = txtFiltroArticulo.Text;
 
-            listaFiltrada = listArticulos.FindAll(art => art.Nombre.ToLower().Contains(filtro.ToLower()));
+            listaFiltrada = listArticulos.FindAll(art => art.Nombre.ToLower().Contains(filtro.ToLower()) || art.Categoria.ToString().ToLower().Contains(filtro.ToLower()) || art.Marca.ToString().ToLower().Contains(filtro.ToLower()));
 
             dgArticulos.DataSource = null;
             dgArticulos.DataSource = listaFiltrada;
