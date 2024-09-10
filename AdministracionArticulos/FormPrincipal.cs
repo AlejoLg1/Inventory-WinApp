@@ -88,7 +88,7 @@ namespace AdministracionArticulos
             }
             else if (rdMarcas.Checked)
             {
-                //Eliminar Marca
+                deleteMarca();
             }
             else
             {
@@ -261,6 +261,28 @@ namespace AdministracionArticulos
                 if (response == DialogResult.Yes)
                 {
                     service.delete(selectedCat.Id);
+                    cargarGrids();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void deleteMarca()
+        {
+            MarcaServices service = new MarcaServices();
+            Marca selectedMarca;
+
+            try
+            {
+                selectedMarca = (Marca)dgMarcas.CurrentRow.DataBoundItem;
+                DialogResult response = MessageBox.Show($"¿Éstá seguro de eliminar la marca '{selectedMarca.Descripcion}' con Id '{selectedMarca.Id}'?", "Eliminar Marca", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (response == DialogResult.Yes)
+                {
+                    service.delete(selectedMarca.Id);
                     cargarGrids();
                 }
             }

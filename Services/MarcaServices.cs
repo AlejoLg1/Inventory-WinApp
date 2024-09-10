@@ -81,7 +81,27 @@ namespace Services
                   dato.CloseConnection();
               }
           }
- 
+
+          public void delete(int Id)
+          {
+              try
+              {
+                  dato.setQuery("DELETE from MARCAS where id = @Id");
+                  dato.setParameter("@Id", Id);
+
+                  dato.excecuteAction();
+              }
+              catch (Exception ex)
+              {
+
+                  throw ex;
+              }
+              finally
+              {
+                  dato.CloseConnection();
+              }
+          }
+
     }
 }
 
