@@ -102,8 +102,11 @@ namespace AdministracionArticulos
             try
             {
                 ArticuloServices articuloService = new ArticuloServices();
-                Articulo articuloSeleccionado = (Articulo)dgArticulos.CurrentRow.DataBoundItem;
-                listImagenes = articuloService.listarImagenes(articuloSeleccionado.Codigo);
+                if (dgArticulos.CurrentRow != null)
+                {
+                  Articulo articuloSeleccionado = (Articulo)dgArticulos.CurrentRow.DataBoundItem;
+                  listImagenes = articuloService.listarImagenes(articuloSeleccionado.Codigo);
+                }
                 nudImagenesArticulos.Value = 0;
                 
                 if (listImagenes.Count > 0)
@@ -164,8 +167,7 @@ namespace AdministracionArticulos
                 }
 
                 dgArticulos.DataSource = listArticulos;
-                dgArticulos.Columns["Id"].Visible = false;
-                dgArticulos.Columns["Imagen"].Visible = false;
+                hideColumns();
 
                 if (listImagenes.Count > 0)
                 {
@@ -191,6 +193,12 @@ namespace AdministracionArticulos
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void hideColumns()
+        {
+            dgArticulos.Columns["Id"].Visible = false;
+            dgArticulos.Columns["Imagen"].Visible = false;
         }
 
         private void AjustarDgView(DataGridView dataGridView, int maxVisibleRows)
@@ -292,5 +300,26 @@ namespace AdministracionArticulos
             }
         }
 
+        private void btnFiltroArticulo_Click(object sender, EventArgs e)
+        {
+            List<Articulo> listaFiltrada;
+            string filtro = txtFiltroArticulo.Text;
+
+            listaFiltrada = listArticulos.FindAll(art => art.Nombre.ToLower().Contains(filtro.ToLower()));
+
+            dgArticulos.DataSource = null;
+            dgArticulos.DataSource = listaFiltrada;
+            hideColumns();
+        }
+
+        private void btnResetearDgv_Click(object sender, EventArgs e)
+        {
+            List<Articulo> listaFiltrada;
+            listaFiltrada = listArticulos;
+
+            dgArticulos.DataSource = null;
+            dgArticulos.DataSource = listaFiltrada;
+            hideColumns();
+        }
     }
 }

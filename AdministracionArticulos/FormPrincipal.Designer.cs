@@ -43,6 +43,10 @@
             this.btEliminar = new System.Windows.Forms.Button();
             this.pbPcArticulos = new System.Windows.Forms.PictureBox();
             this.nudImagenesArticulos = new System.Windows.Forms.NumericUpDown();
+            this.txtFiltroArticulo = new System.Windows.Forms.TextBox();
+            this.lblFiltroArticulo = new System.Windows.Forms.Label();
+            this.btnFiltroArticulo = new System.Windows.Forms.Button();
+            this.btnResetearDgv = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgArticulos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgMarcas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgCategorias)).BeginInit();
@@ -55,7 +59,7 @@
             this.lbArticulos.AutoEllipsis = true;
             this.lbArticulos.AutoSize = true;
             this.lbArticulos.Font = new System.Drawing.Font("MS Reference Sans Serif", 16.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbArticulos.Location = new System.Drawing.Point(268, 20);
+            this.lbArticulos.Location = new System.Drawing.Point(11, 50);
             this.lbArticulos.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbArticulos.Name = "lbArticulos";
             this.lbArticulos.Size = new System.Drawing.Size(115, 28);
@@ -67,7 +71,7 @@
             this.dgArticulos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgArticulos.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dgArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgArticulos.Location = new System.Drawing.Point(10, 65);
+            this.dgArticulos.Location = new System.Drawing.Point(9, 98);
             this.dgArticulos.Name = "dgArticulos";
             this.dgArticulos.ReadOnly = true;
             this.dgArticulos.RowHeadersWidth = 51;
@@ -107,7 +111,7 @@
             // 
             this.lbMarcas.AutoSize = true;
             this.lbMarcas.Font = new System.Drawing.Font("MS Reference Sans Serif", 16.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbMarcas.Location = new System.Drawing.Point(59, 256);
+            this.lbMarcas.Location = new System.Drawing.Point(77, 255);
             this.lbMarcas.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbMarcas.Name = "lbMarcas";
             this.lbMarcas.Size = new System.Drawing.Size(94, 28);
@@ -118,7 +122,7 @@
             // 
             this.lbCategorias.AutoSize = true;
             this.lbCategorias.Font = new System.Drawing.Font("MS Reference Sans Serif", 16.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbCategorias.Location = new System.Drawing.Point(493, 256);
+            this.lbCategorias.Location = new System.Drawing.Point(497, 255);
             this.lbCategorias.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbCategorias.Name = "lbCategorias";
             this.lbCategorias.Size = new System.Drawing.Size(138, 28);
@@ -221,13 +225,54 @@
             this.nudImagenesArticulos.TabIndex = 15;
             this.nudImagenesArticulos.ValueChanged += new System.EventHandler(this.nudImagenesArticulos_ValueChanged);
             // 
+            // txtFiltroArticulo
+            // 
+            this.txtFiltroArticulo.Location = new System.Drawing.Point(263, 57);
+            this.txtFiltroArticulo.Name = "txtFiltroArticulo";
+            this.txtFiltroArticulo.Size = new System.Drawing.Size(136, 20);
+            this.txtFiltroArticulo.TabIndex = 16;
+            // 
+            // lblFiltroArticulo
+            // 
+            this.lblFiltroArticulo.AutoSize = true;
+            this.lblFiltroArticulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFiltroArticulo.Location = new System.Drawing.Point(195, 60);
+            this.lblFiltroArticulo.Name = "lblFiltroArticulo";
+            this.lblFiltroArticulo.Size = new System.Drawing.Size(62, 16);
+            this.lblFiltroArticulo.TabIndex = 17;
+            this.lblFiltroArticulo.Text = "Nombre :";
+            // 
+            // btnFiltroArticulo
+            // 
+            this.btnFiltroArticulo.Location = new System.Drawing.Point(405, 54);
+            this.btnFiltroArticulo.Name = "btnFiltroArticulo";
+            this.btnFiltroArticulo.Size = new System.Drawing.Size(75, 23);
+            this.btnFiltroArticulo.TabIndex = 18;
+            this.btnFiltroArticulo.Text = "Buscar";
+            this.btnFiltroArticulo.UseVisualStyleBackColor = true;
+            this.btnFiltroArticulo.Click += new System.EventHandler(this.btnFiltroArticulo_Click);
+            // 
+            // btnResetearDgv
+            // 
+            this.btnResetearDgv.Location = new System.Drawing.Point(486, 55);
+            this.btnResetearDgv.Name = "btnResetearDgv";
+            this.btnResetearDgv.Size = new System.Drawing.Size(75, 23);
+            this.btnResetearDgv.TabIndex = 19;
+            this.btnResetearDgv.Text = "Resetear";
+            this.btnResetearDgv.UseVisualStyleBackColor = true;
+            this.btnResetearDgv.Click += new System.EventHandler(this.btnResetearDgv_Click);
+            // 
             // formPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.AntiqueWhite;
-            this.ClientSize = new System.Drawing.Size(664, 541);
+            this.ClientSize = new System.Drawing.Size(681, 541);
+            this.Controls.Add(this.btnResetearDgv);
+            this.Controls.Add(this.btnFiltroArticulo);
+            this.Controls.Add(this.lblFiltroArticulo);
+            this.Controls.Add(this.txtFiltroArticulo);
             this.Controls.Add(this.nudImagenesArticulos);
             this.Controls.Add(this.pbPcArticulos);
             this.Controls.Add(this.btEliminar);
@@ -275,6 +320,10 @@
         private System.Windows.Forms.Button btEliminar;
         private System.Windows.Forms.PictureBox pbPcArticulos;
         private System.Windows.Forms.NumericUpDown nudImagenesArticulos;
+        private System.Windows.Forms.TextBox txtFiltroArticulo;
+        private System.Windows.Forms.Label lblFiltroArticulo;
+        private System.Windows.Forms.Button btnFiltroArticulo;
+        private System.Windows.Forms.Button btnResetearDgv;
     }
 }
 
