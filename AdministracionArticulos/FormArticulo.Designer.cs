@@ -218,10 +218,10 @@
             // lbGestionarImagenes
             // 
             this.lbGestionarImagenes.AutoSize = true;
-            this.lbGestionarImagenes.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbGestionarImagenes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbGestionarImagenes.Location = new System.Drawing.Point(121, 356);
             this.lbGestionarImagenes.Name = "lbGestionarImagenes";
-            this.lbGestionarImagenes.Size = new System.Drawing.Size(189, 60);
+            this.lbGestionarImagenes.Size = new System.Drawing.Size(187, 54);
             this.lbGestionarImagenes.TabIndex = 20;
             this.lbGestionarImagenes.Text = "Agregue el Artículo para\r\n    poder gestionar las \r\n            imagenes";
             // 

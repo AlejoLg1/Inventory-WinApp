@@ -46,7 +46,7 @@ namespace Services
               try
               {
                   dato.setQuery("INSERT into MARCAS (Descripcion) values(@Descripcion)");
-                  dato.setParameter("@Descricion", newMarca.Descripcion);
+                  dato.setParameter("@Descripcion", newMarca.Descripcion);
 
                   dato.excecuteAction();
               }
