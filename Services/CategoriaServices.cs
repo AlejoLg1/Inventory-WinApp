@@ -46,7 +46,7 @@ namespace Services
             }
         }
 
-        private void add(Categoria NewCategoria)
+        public void add(Categoria NewCategoria)
         {
             try
             {
@@ -66,7 +66,7 @@ namespace Services
             }
         }
 
-        private void modify(Categoria categoria)
+        public void modify(Categoria categoria)
         {
             try
             {
@@ -86,12 +86,12 @@ namespace Services
             }
         }
 
-        private void delete(Categoria categoria)
+        public void delete(int Id)
         {
             try
             {
               dato.setQuery("DELETE from CATEGORIAS where id = @Id");
-              dato.setParameter("@Id", categoria.Id);
+              dato.setParameter("@Id",Id);
 
               dato.excecuteAction();
             }
