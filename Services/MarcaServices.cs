@@ -41,6 +41,46 @@ namespace Services
                 dato.CloseConnection();
             }
         }
+          private void add(Marca newMarca)
+          {
+              try
+              {
+                  dato.setQuery("INSERT into MARCAS (Descripcion) values(@Descripcion)");
+                  dato.setParameter("@Descricion", newMarca.Descripcion);
+
+                  dato.excecuteAction();
+              }
+              catch (Exception ex)
+              {
+
+                  throw ex;
+              }
+              finally
+              {
+                  dato.CloseConnection();
+              }
+          }
+
+          private void modify(Marca marca)
+          {
+              try
+              {
+                  dato.setQuery("UPDATE MARCAS Descripcion = @Descripcion where id = @Id");
+                  dato.setParameter("@Descripcion", marca.Descripcion);
+
+                  dato.excecuteAction();
+              }
+              catch (Exception ex)
+              {
+
+                  throw ex;
+              }
+              finally
+              {
+                  dato.CloseConnection();
+              }
+          }
+ 
     }
 }
 
