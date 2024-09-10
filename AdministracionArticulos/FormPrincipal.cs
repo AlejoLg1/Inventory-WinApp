@@ -28,7 +28,7 @@ namespace AdministracionArticulos
         private void formPrincipal_Load(object sender, EventArgs e)
         {
             cargarGrids();
-            Marca = false; 
+            Marca = false;
         }
 
         /*---------------- EVENTS ----------------*/
@@ -96,10 +96,16 @@ namespace AdministracionArticulos
                 Articulo articuloSeleccionado = (Articulo)dgArticulos.CurrentRow.DataBoundItem;
                 listImagenes = articuloService.listarImagenes(articuloSeleccionado.Codigo);
                 nudImagenesArticulos.Value = 0;
-                nudImagenesArticulos.Maximum = listImagenes.Count;
+                
                 if (listImagenes.Count > 0)
                 {
+                    nudImagenesArticulos.Maximum = listImagenes.Count;
                     uploadImage(listImagenes[(int)nudImagenesArticulos.Value]);
+                }
+                else
+                {
+                    nudImagenesArticulos.Maximum = 0;
+                    uploadImage("DefaultImage");
                 }
             }
             catch (Exception ex)

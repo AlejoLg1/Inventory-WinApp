@@ -28,6 +28,8 @@ namespace AdministracionArticulos
             this.articulo = articulo;
         }
 
+        /*---------------- EVENTS ----------------*/
+
         private void btnCancelarArticulo_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -41,7 +43,6 @@ namespace AdministracionArticulos
             {
                 if (articulo == null)
                 {
-                    MessageBox.Show("ES NULO");
                     articulo = new Articulo();
                 }
                 
@@ -73,63 +74,7 @@ namespace AdministracionArticulos
 
         private void FormArticulo_Load(object sender, EventArgs e)
         {
-            ArticuloServices articuloService = new ArticuloServices();
-            MarcaServices marcaServices = new MarcaServices();
-            CategoriaServices categoriaServices = new CategoriaServices();
-
-            try
-            {
-                
-                lbPanelArticulo.Text = "Agregando Artículo";
-                cbMarcaArticulo.DataSource = marcaServices.listar();
-                cbMarcaArticulo.ValueMember = "Id";
-                cbMarcaArticulo.DisplayMember = "Descripcion";
-                cbCategoriaArticulo.DataSource = categoriaServices.listar();
-                cbCategoriaArticulo.ValueMember = "Id";
-                cbCategoriaArticulo.DisplayMember = "Descripcion";
-
-                if (articulo != null)
-                {
-                    lbPanelArticulo.Text = "Modificando Artículo";
-                    txtCodigoArticulo.Text = articulo.Codigo;
-                    txtNombreArticulo.Text = articulo.Nombre;
-                    txtDescripcionArticulo.Text = articulo.Descripcion;
-                    cbMarcaArticulo.SelectedValue = articulo.Marca.Id;
-                    cbCategoriaArticulo.SelectedValue = articulo.Categoria.Id;
-                    txtPrecioArticulo.Text = articulo.Precio.ToString();
-
-                    nudImagenesPanelArticulo.Visible = true;
-                    listImagenes = articuloService.listarImagenes(articulo.Codigo);
-                    if (listImagenes.Count > 0)
-                    {
-                        nudImagenesPanelArticulo.Maximum = listImagenes.Count - 1;
-                        uploadImagePanelArticulos(listImagenes[(int)nudImagenesPanelArticulo.Value]);
-                    }
-                    else
-                    {
-                        uploadImagePanelArticulos("DefaultImage");
-                    }
-
-                }
-                
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-
-        }
-
-        private void uploadImagePanelArticulos(string image)
-        {
-            try
-            {
-                pbPanelArticulo.Load(image);
-            }
-            catch (Exception ex)
-            {
-                pbPanelArticulo.Load("https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg");
-            }
+            cargar();
         }
 
         private void nudImagenesPanelArticulo_ValueChanged(object sender, EventArgs e)
@@ -152,6 +97,83 @@ namespace AdministracionArticulos
             catch (Exception ex)
             {
                 throw ex;
+            }
+        }
+
+        private void btnGestionarImagenes_Click(object sender, EventArgs e)
+        {
+            FormImagen imagen = new FormImagen(articulo.Id);
+            imagen.ShowDialog();
+            cargar();
+        }
+
+        /*---------------- FUNCTIONS ----------------*/
+
+        private void cargar()
+        {
+            ArticuloServices articuloService = new ArticuloServices();
+            MarcaServices marcaServices = new MarcaServices();
+            CategoriaServices categoriaServices = new CategoriaServices();
+
+            try
+            {
+
+                lbPanelArticulo.Text = "Agregando Artículo";
+                btnAceptarArticulo.Text = "Agregar";
+                cbMarcaArticulo.DataSource = marcaServices.listar();
+                cbMarcaArticulo.ValueMember = "Id";
+                cbMarcaArticulo.DisplayMember = "Descripcion";
+                cbCategoriaArticulo.DataSource = categoriaServices.listar();
+                cbCategoriaArticulo.ValueMember = "Id";
+                cbCategoriaArticulo.DisplayMember = "Descripcion";
+                btnGestionarImagenes.Visible = false;
+                lbGestionarImagenes.Visible = true;
+
+                if (articulo != null)
+                {
+                    lbPanelArticulo.Text = "Modificando Artículo";
+                    btnAceptarArticulo.Text = "Modificar";
+                    txtCodigoArticulo.Text = articulo.Codigo;
+                    txtNombreArticulo.Text = articulo.Nombre;
+                    txtDescripcionArticulo.Text = articulo.Descripcion;
+                    cbMarcaArticulo.SelectedValue = articulo.Marca.Id;
+                    cbCategoriaArticulo.SelectedValue = articulo.Categoria.Id;
+                    txtPrecioArticulo.Text = articulo.Precio.ToString();
+                    btnGestionarImagenes.Visible = true;
+                    lbGestionarImagenes.Visible = false;
+
+
+                    nudImagenesPanelArticulo.Visible = true;
+                    listImagenes = articuloService.listarImagenes(articulo.Codigo);
+                    if (listImagenes.Count > 0)
+                    {
+                        nudImagenesPanelArticulo.Maximum = listImagenes.Count - 1;
+                        uploadImagePanelArticulos(listImagenes[(int)nudImagenesPanelArticulo.Value]);
+                    }
+                    else
+                    {
+                        uploadImagePanelArticulos("DefaultImage");
+                        nudImagenesPanelArticulo.Maximum = 0;
+                    }
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void uploadImagePanelArticulos(string image)
+        {
+            try
+            {
+                pbPanelArticulo.Load(image);
+            }
+            catch (Exception ex)
+            {
+                pbPanelArticulo.Load("https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg");
             }
         }
     }
