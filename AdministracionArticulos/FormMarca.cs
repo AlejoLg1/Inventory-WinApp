@@ -76,8 +76,10 @@ namespace AdministracionArticulos
 
             try
             {
+                lbPanelMarca.Text = "Agregando Marca";
                 if (marca != null)
                 {
+                    lbPanelMarca.Text = "Modificando Marca";
                     BtnAgregar.Text = "Modificar";
                     TxtBoxDescripcion.Text = marca.Descripcion;  
                 }

@@ -230,7 +230,7 @@
             // 
             this.lbGestionarImagenes.AutoSize = true;
             this.lbGestionarImagenes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbGestionarImagenes.Location = new System.Drawing.Point(161, 438);
+            this.lbGestionarImagenes.Location = new System.Drawing.Point(124, 356);
             this.lbGestionarImagenes.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbGestionarImagenes.Name = "lbGestionarImagenes";
             this.lbGestionarImagenes.Size = new System.Drawing.Size(187, 54);

@@ -70,11 +70,11 @@ namespace AdministracionArticulos
 
             try
             {
-                lblAgregarCat.Text = "Agregando Categoria";
+                lbPanelCategoria.Text = "Agregando Categoría";
                 btnAceptarCategoria.Text = "Agregar";
                 if (categoria != null) 
                 {
-                    lblAgregarCat.Text = "Modificando Categoria";
+                    lbPanelCategoria.Text = "Modificando Categoría";
                     btnAceptarCategoria.Text = "Modificar";
                     txtDescripcionCat.Text = categoria.Descripcion;
                 }
