@@ -242,7 +242,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AntiqueWhite;
-            this.ClientSize = new System.Drawing.Size(784, 518);
+            this.ClientSize = new System.Drawing.Size(784, 458);
             this.Controls.Add(this.lbGestionarImagenes);
             this.Controls.Add(this.btnGestionarImagenes);
             this.Controls.Add(this.nudImagenesPanelArticulo);
