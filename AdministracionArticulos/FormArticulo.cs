@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.ComponentModel.DataAnnotations;
 
 namespace AdministracionArticulos
 {
@@ -53,22 +54,33 @@ namespace AdministracionArticulos
                 articulo.Categoria = (Categoria)cbCategoriaArticulo.SelectedItem;
                 articulo.Precio = decimal.Parse(txtPrecioArticulo.Text);
 
-                if (articulo.Id != 0)
+                if (ErrorsInFields(service) == false)
                 {
-                    service.modify(articulo);
-                    MessageBox.Show("Articulo modificado exitosamente");
+                    if (articulo.Id != 0)
+                    {
+                        service.modify(articulo);
+                        MessageBox.Show("Articulo modificado exitosamente");
+                        Close();
+                    }
+                    else
+                    {
+                    
+                        if (!service.repeatedCode(articulo.Codigo))
+                        {
+                            service.add(articulo);
+                            MessageBox.Show("Articulo agregado exitosamente");
+                            Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Error: Código de producto repetido\n", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
                 }
-                else
-                {
-                    service.add(articulo);
-                    MessageBox.Show("Articulo agregado exitosamente");
-                }
-
-                Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                ErrorsInFields(service);
             }
         }
 
@@ -131,6 +143,7 @@ namespace AdministracionArticulos
 
                 if (articulo != null)
                 {
+                    txtCodigoArticulo.ReadOnly = true;
                     lbPanelArticulo.Text = "Modificando Artículo";
                     btnAceptarArticulo.Text = "Modificar";
                     txtCodigoArticulo.Text = articulo.Codigo;
@@ -177,6 +190,29 @@ namespace AdministracionArticulos
             }
         }
 
+        private bool ErrorsInFields(ArticuloServices service)
+        {
+            try
+            {
+                bool response = false;
+                var resultadosValidacion = service.ValidateTypes(articulo);
+                foreach (var resultado in resultadosValidacion)
+                {
+                    MessageBox.Show(resultado.ErrorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
 
+                if (resultadosValidacion.Any())
+                {
+                    response = true;
+                }
+
+                return response;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Verifique los datos cargados.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return true;
+            }
+        }
     }
 }
