@@ -45,8 +45,6 @@
             this.nudImagenesArticulos = new System.Windows.Forms.NumericUpDown();
             this.txtFiltroArticulo = new System.Windows.Forms.TextBox();
             this.lblFiltroArticulo = new System.Windows.Forms.Label();
-            this.btnFiltroArticulo = new System.Windows.Forms.Button();
-            this.btnResetearDgv = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgArticulos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgMarcas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgCategorias)).BeginInit();
@@ -231,6 +229,7 @@
             this.txtFiltroArticulo.Name = "txtFiltroArticulo";
             this.txtFiltroArticulo.Size = new System.Drawing.Size(136, 20);
             this.txtFiltroArticulo.TabIndex = 16;
+            this.txtFiltroArticulo.TextChanged += new System.EventHandler(this.txtFiltroArticulo_TextChanged);
             // 
             // lblFiltroArticulo
             // 
@@ -238,29 +237,9 @@
             this.lblFiltroArticulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFiltroArticulo.Location = new System.Drawing.Point(195, 60);
             this.lblFiltroArticulo.Name = "lblFiltroArticulo";
-            this.lblFiltroArticulo.Size = new System.Drawing.Size(62, 16);
+            this.lblFiltroArticulo.Size = new System.Drawing.Size(52, 16);
             this.lblFiltroArticulo.TabIndex = 17;
-            this.lblFiltroArticulo.Text = "Nombre :";
-            // 
-            // btnFiltroArticulo
-            // 
-            this.btnFiltroArticulo.Location = new System.Drawing.Point(405, 54);
-            this.btnFiltroArticulo.Name = "btnFiltroArticulo";
-            this.btnFiltroArticulo.Size = new System.Drawing.Size(75, 23);
-            this.btnFiltroArticulo.TabIndex = 18;
-            this.btnFiltroArticulo.Text = "Buscar";
-            this.btnFiltroArticulo.UseVisualStyleBackColor = true;
-            this.btnFiltroArticulo.Click += new System.EventHandler(this.btnFiltroArticulo_Click);
-            // 
-            // btnResetearDgv
-            // 
-            this.btnResetearDgv.Location = new System.Drawing.Point(486, 55);
-            this.btnResetearDgv.Name = "btnResetearDgv";
-            this.btnResetearDgv.Size = new System.Drawing.Size(75, 23);
-            this.btnResetearDgv.TabIndex = 19;
-            this.btnResetearDgv.Text = "Resetear";
-            this.btnResetearDgv.UseVisualStyleBackColor = true;
-            this.btnResetearDgv.Click += new System.EventHandler(this.btnResetearDgv_Click);
+            this.lblFiltroArticulo.Text = "Buscar:";
             // 
             // formPrincipal
             // 
@@ -268,9 +247,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.AntiqueWhite;
-            this.ClientSize = new System.Drawing.Size(681, 541);
-            this.Controls.Add(this.btnResetearDgv);
-            this.Controls.Add(this.btnFiltroArticulo);
+            this.ClientSize = new System.Drawing.Size(715, 541);
             this.Controls.Add(this.lblFiltroArticulo);
             this.Controls.Add(this.txtFiltroArticulo);
             this.Controls.Add(this.nudImagenesArticulos);
@@ -322,8 +299,6 @@
         private System.Windows.Forms.NumericUpDown nudImagenesArticulos;
         private System.Windows.Forms.TextBox txtFiltroArticulo;
         private System.Windows.Forms.Label lblFiltroArticulo;
-        private System.Windows.Forms.Button btnFiltroArticulo;
-        private System.Windows.Forms.Button btnResetearDgv;
     }
 }
 

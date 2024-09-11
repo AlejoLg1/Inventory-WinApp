@@ -47,7 +47,7 @@ namespace AdministracionArticulos
             }
             else
             {
-                //Agregar Categoría
+             
                 FormCategoria categoria = new FormCategoria();
                 categoria.ShowDialog();
             }
@@ -300,26 +300,26 @@ namespace AdministracionArticulos
             }
         }
 
-        private void btnFiltroArticulo_Click(object sender, EventArgs e)
+        private void txtFiltroArticulo_TextChanged(object sender, EventArgs e)
         {
             List<Articulo> listaFiltrada;
             string filtro = txtFiltroArticulo.Text;
 
-            listaFiltrada = listArticulos.FindAll(art => art.Nombre.ToLower().Contains(filtro.ToLower()) || art.Categoria.ToString().ToLower().Contains(filtro.ToLower()) || art.Marca.ToString().ToLower().Contains(filtro.ToLower()));
+            if (filtro != "")
+            {
+             listaFiltrada = listArticulos.FindAll(art => art.Nombre.ToLower().Contains(filtro.ToLower()) || art.Categoria.ToString().ToLower().Contains(filtro.ToLower()) || art.Marca.ToString().ToLower().Contains(filtro.ToLower()));
+
+            }
+            else
+            {
+                listaFiltrada = listArticulos;
+            }
+
 
             dgArticulos.DataSource = null;
             dgArticulos.DataSource = listaFiltrada;
             hideColumns();
         }
 
-        private void btnResetearDgv_Click(object sender, EventArgs e)
-        {
-            List<Articulo> listaFiltrada;
-            listaFiltrada = listArticulos;
-
-            dgArticulos.DataSource = null;
-            dgArticulos.DataSource = listaFiltrada;
-            hideColumns();
-        }
     }
 }
