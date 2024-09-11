@@ -164,5 +164,27 @@ namespace Services
                 throw ex;
             }
         }
+
+        public bool repeatedCode(string codArticulo)
+        {
+            try
+            {
+                bool response = false;
+                DB.setQuery("Select Codigo from ARTICULOS where Codigo = @codArticulo");
+                DB.setParameter("@codArticulo", codArticulo);
+                DB.excecuteQuery();
+
+                if (DB.Reader.Read())
+                {
+                    response = true;
+                }
+
+                return response;
+            }
+            catch (Exception ex)
+            {
+                return true;
+            }
+        }
     }
 }

@@ -60,8 +60,15 @@ namespace AdministracionArticulos
                 }
                 else
                 {
-                    service.add(articulo);
-                    MessageBox.Show("Articulo agregado exitosamente");
+                    if (!service.repeatedCode(articulo.Codigo))
+                    {
+                        service.add(articulo);
+                        MessageBox.Show("Articulo agregado exitosamente");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error: Código de producto repetido\n", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
 
                 Close();
