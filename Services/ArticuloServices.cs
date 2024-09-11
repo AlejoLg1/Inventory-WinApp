@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Models;
 using Utils;
+using System.ComponentModel.DataAnnotations;
 
 namespace Services
 {
@@ -149,6 +150,10 @@ namespace Services
             {
                 throw ex;
             }
+            finally
+            {
+                DB.CloseConnection();
+            }
         }
 
         public void delete(int Id)
@@ -162,6 +167,10 @@ namespace Services
             catch (Exception ex)
             {
                 throw ex;
+            }
+            finally
+            {
+                DB.CloseConnection();
             }
         }
 
@@ -185,6 +194,32 @@ namespace Services
             {
                 return true;
             }
+            finally
+            {
+                DB.CloseConnection();
+            }
+        }
+
+        public IEnumerable<ValidationResult> ValidateTypes(Articulo articulo)
+        {
+            var resultados = new List<ValidationResult>();
+
+            if (string.IsNullOrWhiteSpace(articulo.Codigo))
+            {
+                resultados.Add(new ValidationResult("El código es obligatorio.", new[] { nameof(articulo.Codigo) }));
+            }
+
+            if (string.IsNullOrWhiteSpace(articulo.Nombre))
+            {
+                resultados.Add(new ValidationResult("El nombre es obligatorio.", new[] { nameof(articulo.Nombre) }));
+            }
+
+            if (articulo.Precio <= 0)
+            {
+                resultados.Add(new ValidationResult("El precio debe ser mayor que cero.", new[] { nameof(articulo.Precio) }));
+            }
+
+            return resultados;
         }
     }
 }
