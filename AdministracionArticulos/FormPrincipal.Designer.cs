@@ -71,7 +71,7 @@
             this.dgArticulos.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dgArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgArticulos.Location = new System.Drawing.Point(14, 87);
-            this.dgArticulos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgArticulos.Margin = new System.Windows.Forms.Padding(4);
             this.dgArticulos.Name = "dgArticulos";
             this.dgArticulos.ReadOnly = true;
             this.dgArticulos.RowHeadersWidth = 51;
@@ -87,7 +87,7 @@
             this.dgMarcas.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dgMarcas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgMarcas.Location = new System.Drawing.Point(18, 332);
-            this.dgMarcas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgMarcas.Margin = new System.Windows.Forms.Padding(4);
             this.dgMarcas.Name = "dgMarcas";
             this.dgMarcas.ReadOnly = true;
             this.dgMarcas.RowHeadersWidth = 51;
@@ -101,7 +101,7 @@
             this.dgCategorias.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dgCategorias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgCategorias.Location = new System.Drawing.Point(615, 332);
-            this.dgCategorias.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgCategorias.Margin = new System.Windows.Forms.Padding(4);
             this.dgCategorias.Name = "dgCategorias";
             this.dgCategorias.ReadOnly = true;
             this.dgCategorias.RowHeadersWidth = 51;
@@ -135,7 +135,7 @@
             this.rdArticulos.Checked = true;
             this.rdArticulos.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdArticulos.Location = new System.Drawing.Point(199, 708);
-            this.rdArticulos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdArticulos.Margin = new System.Windows.Forms.Padding(4);
             this.rdArticulos.Name = "rdArticulos";
             this.rdArticulos.Size = new System.Drawing.Size(111, 30);
             this.rdArticulos.TabIndex = 7;
@@ -148,7 +148,7 @@
             this.rdMarcas.AutoSize = true;
             this.rdMarcas.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdMarcas.Location = new System.Drawing.Point(383, 708);
-            this.rdMarcas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdMarcas.Margin = new System.Windows.Forms.Padding(4);
             this.rdMarcas.Name = "rdMarcas";
             this.rdMarcas.Size = new System.Drawing.Size(93, 30);
             this.rdMarcas.TabIndex = 8;
@@ -160,7 +160,7 @@
             this.rdCategoria.AutoSize = true;
             this.rdCategoria.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdCategoria.Location = new System.Drawing.Point(543, 708);
-            this.rdCategoria.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdCategoria.Margin = new System.Windows.Forms.Padding(4);
             this.rdCategoria.Name = "rdCategoria";
             this.rdCategoria.Size = new System.Drawing.Size(130, 30);
             this.rdCategoria.TabIndex = 9;
@@ -180,7 +180,7 @@
             // btAgregar
             // 
             this.btAgregar.Location = new System.Drawing.Point(247, 759);
-            this.btAgregar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btAgregar.Margin = new System.Windows.Forms.Padding(4);
             this.btAgregar.Name = "btAgregar";
             this.btAgregar.Size = new System.Drawing.Size(395, 60);
             this.btAgregar.TabIndex = 11;
@@ -191,7 +191,7 @@
             // btModificar
             // 
             this.btModificar.Location = new System.Drawing.Point(247, 844);
-            this.btModificar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btModificar.Margin = new System.Windows.Forms.Padding(4);
             this.btModificar.Name = "btModificar";
             this.btModificar.Size = new System.Drawing.Size(395, 60);
             this.btModificar.TabIndex = 12;
@@ -202,7 +202,7 @@
             // btEliminar
             // 
             this.btEliminar.Location = new System.Drawing.Point(247, 927);
-            this.btEliminar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btEliminar.Margin = new System.Windows.Forms.Padding(4);
             this.btEliminar.Name = "btEliminar";
             this.btEliminar.Size = new System.Drawing.Size(395, 60);
             this.btEliminar.TabIndex = 13;
@@ -233,7 +233,7 @@
             // txtFiltroArticulo
             // 
             this.txtFiltroArticulo.Location = new System.Drawing.Point(353, 33);
-            this.txtFiltroArticulo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtFiltroArticulo.Margin = new System.Windows.Forms.Padding(4);
             this.txtFiltroArticulo.Name = "txtFiltroArticulo";
             this.txtFiltroArticulo.Size = new System.Drawing.Size(180, 22);
             this.txtFiltroArticulo.TabIndex = 16;
@@ -252,7 +252,7 @@
             // btnFiltroArticulo
             // 
             this.btnFiltroArticulo.Location = new System.Drawing.Point(543, 33);
-            this.btnFiltroArticulo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnFiltroArticulo.Margin = new System.Windows.Forms.Padding(4);
             this.btnFiltroArticulo.Name = "btnFiltroArticulo";
             this.btnFiltroArticulo.Size = new System.Drawing.Size(100, 25);
             this.btnFiltroArticulo.TabIndex = 18;
@@ -263,7 +263,7 @@
             // btnResetearDgv
             // 
             this.btnResetearDgv.Location = new System.Drawing.Point(651, 33);
-            this.btnResetearDgv.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnResetearDgv.Margin = new System.Windows.Forms.Padding(4);
             this.btnResetearDgv.Name = "btnResetearDgv";
             this.btnResetearDgv.Size = new System.Drawing.Size(100, 26);
             this.btnResetearDgv.TabIndex = 19;
@@ -277,7 +277,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.AntiqueWhite;
-            this.ClientSize = new System.Drawing.Size(889, 1032);
+            this.ClientSize = new System.Drawing.Size(889, 999);
             this.Controls.Add(this.btnResetearDgv);
             this.Controls.Add(this.btnFiltroArticulo);
             this.Controls.Add(this.lblFiltroArticulo);
