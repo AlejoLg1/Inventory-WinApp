@@ -21,6 +21,7 @@ namespace Models
 
         public Marca Marca { get; set; }
 
+        [DisplayName("Categoría")]
         public Categoria Categoria { get; set; }
 
         public string Imagen { get; set; }

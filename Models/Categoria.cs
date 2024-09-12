@@ -9,9 +9,10 @@ namespace Models
 {
     public class Categoria
     {
+        [DisplayName("Número")]
         public int Id { get; set; }
 
-        [DisplayName("Descripcón")]
+        [DisplayName("Descripción")]
         public string Descripcion { get; set; }
 
         public override string ToString()
