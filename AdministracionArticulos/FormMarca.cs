@@ -55,6 +55,12 @@ namespace AdministracionArticulos
                     return;
                 }
 
+                if (service.ExistsName(TxtBoxDescripcion.Text) && (marca.Id == 0 || !TxtBoxDescripcion.Text.Equals(marca.Descripcion, StringComparison.OrdinalIgnoreCase)))
+                {
+                    MessageBox.Show("Ya existe una marca con ese nombre.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 marca.Descripcion = TxtBoxDescripcion.Text;
 
                 if (marca.Id != 0)
