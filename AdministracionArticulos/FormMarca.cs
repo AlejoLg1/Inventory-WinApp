@@ -42,6 +42,19 @@ namespace AdministracionArticulos
                     marca = new Marca();
                 }
 
+
+                if (string.IsNullOrWhiteSpace(TxtBoxDescripcion.Text))
+                {
+                    MessageBox.Show("Debe ingresar una descripción para la Marca.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (!TxtBoxDescripcion.Text.All(char.IsLetter))
+                {
+                    MessageBox.Show("Ingrese solo letras en la Marca.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 marca.Descripcion = TxtBoxDescripcion.Text;
 
                 if (marca.Id != 0)
