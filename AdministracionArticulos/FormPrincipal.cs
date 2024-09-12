@@ -28,7 +28,7 @@ namespace AdministracionArticulos
         private void formPrincipal_Load(object sender, EventArgs e)
         {
             cargarGrids();
-            Marca = false;
+            hideColumns();
         }
 
         /*---------------- EVENTS ----------------*/
@@ -68,7 +68,7 @@ namespace AdministracionArticulos
                       articulo.ShowDialog();
                   }else
                   {
-                        MessageBox.Show("Ningún artículo seleccionado");
+                        MessageBox.Show("Error: Debe seleccionar un artículo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                   }
               }
               else if (rdMarcas.Checked)
@@ -79,11 +79,10 @@ namespace AdministracionArticulos
                       selectedMarca = (Marca)dgMarcas.CurrentRow.DataBoundItem;
                       FormMarca marca = new FormMarca(selectedMarca);
                       marca.ShowDialog();
-
                     }
                     else
                     {
-                        MessageBox.Show("Ningúna marca seleccionada");
+                        MessageBox.Show("Error: Debe seleccionar una marca.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
               }
               else
@@ -94,11 +93,10 @@ namespace AdministracionArticulos
                       selectedCat = (Categoria)dgCategorias.CurrentRow.DataBoundItem;
                       FormCategoria categoria = new FormCategoria(selectedCat);
                       categoria.ShowDialog();
-
                     }
                     else
                     {
-                        MessageBox.Show("Ningúna categoría seleccionada");
+                        MessageBox.Show("Error: Debe seleccionar una categoría.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
               }
               cargarGrids();
@@ -192,37 +190,38 @@ namespace AdministracionArticulos
             try
             {
                 listArticulos = articuloService.listar();
+                dgArticulos.DataSource = listArticulos;
                 if (listArticulos.Count > 0)
                 {
-                listImagenes = articuloService.listarImagenes(listArticulos[0].Codigo);
-                }
-
-                dgArticulos.DataSource = listArticulos;
-                hideColumns();
-
-                if (listImagenes.Count > 0)
-                {
-                    uploadImage(listImagenes[0]);
+                    listImagenes = articuloService.listarImagenes(listArticulos[0].Codigo);
+                    
+                    if (listImagenes.Count > 0)
+                    {
+                        uploadImage(listImagenes[0]);
+                    }
+                    else
+                    {
+                        uploadImage("DefaultImage");
+                    }
                 }
                 else
                 {
                     uploadImage("DefaultImage");
                 }
-
                 AjustarDgView(dgArticulos, 6);
+
 
                 listCategorias = categoriaService.listar();
                 dgCategorias.DataSource = listCategorias;
-                AjustarDgView(dgCategorias, 6);
+                AjustarDgView(dgCategorias, 6);                        
 
                 listMarca = marcaService.listar();
                 dgMarcas.DataSource = listMarca;
                 AjustarDgView(dgMarcas, 6);
-
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("Error al cargar las grillas. Comuníquese con el Soporte.", "FATAL ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -286,7 +285,7 @@ namespace AdministracionArticulos
                 }
                 else
                 {
-                    MessageBox.Show("Ningún artículo seleccionado");
+                    MessageBox.Show("Error: Debe seleccionar un artículo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
@@ -302,13 +301,20 @@ namespace AdministracionArticulos
 
             try
             {
-                selectedCat = (Categoria)dgCategorias.CurrentRow.DataBoundItem;
-                DialogResult response = MessageBox.Show($"¿Éstá seguro de eliminar la categoria '{selectedCat.Descripcion}' con Id '{selectedCat.Id}'?", "Eliminar Categoria", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                if (response == DialogResult.Yes)
+                if (dgCategorias.CurrentRow != null)
                 {
-                    service.delete(selectedCat.Id);
-                    cargarGrids();
+                    selectedCat = (Categoria)dgCategorias.CurrentRow.DataBoundItem;
+                    DialogResult response = MessageBox.Show($"¿Éstá seguro de eliminar la categoria '{selectedCat.Descripcion}'?", "Eliminar Categoria", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (response == DialogResult.Yes)
+                    {
+                        service.delete(selectedCat.Id);
+                        cargarGrids();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Error: Debe seleccionar una categoría.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
@@ -324,14 +330,22 @@ namespace AdministracionArticulos
 
             try
             {
-                selectedMarca = (Marca)dgMarcas.CurrentRow.DataBoundItem;
-                DialogResult response = MessageBox.Show($"¿Éstá seguro de eliminar la marca '{selectedMarca.Descripcion}' con Id '{selectedMarca.Id}'?", "Eliminar Marca", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                if (response == DialogResult.Yes)
+                if (dgMarcas.CurrentRow != null)
                 {
-                    service.delete(selectedMarca.Id);
-                    cargarGrids();
+                    selectedMarca = (Marca)dgMarcas.CurrentRow.DataBoundItem;
+                    DialogResult response = MessageBox.Show($"¿Éstá seguro de eliminar la marca '{selectedMarca.Descripcion}'?", "Eliminar Marca", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (response == DialogResult.Yes)
+                    {
+                        service.delete(selectedMarca.Id);
+                        cargarGrids();
+                    }
                 }
+                else
+                {
+                    MessageBox.Show("Error: Debe seleccionar una marca.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                
             }
             catch (Exception ex)
             {

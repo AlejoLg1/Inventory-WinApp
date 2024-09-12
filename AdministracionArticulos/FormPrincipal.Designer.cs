@@ -65,11 +65,14 @@
             // 
             // dgArticulos
             // 
+            this.dgArticulos.AllowUserToResizeColumns = false;
+            this.dgArticulos.AllowUserToResizeRows = false;
             this.dgArticulos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgArticulos.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dgArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgArticulos.Location = new System.Drawing.Point(9, 77);
-            this.dgArticulos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgArticulos.Margin = new System.Windows.Forms.Padding(4);
+            this.dgArticulos.MultiSelect = false;
             this.dgArticulos.Name = "dgArticulos";
             this.dgArticulos.ReadOnly = true;
             this.dgArticulos.RowHeadersWidth = 51;
@@ -81,11 +84,15 @@
             // 
             // dgMarcas
             // 
+            this.dgMarcas.AllowUserToResizeColumns = false;
+            this.dgMarcas.AllowUserToResizeRows = false;
             this.dgMarcas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgMarcas.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dgMarcas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgMarcas.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.dgMarcas.Location = new System.Drawing.Point(13, 322);
-            this.dgMarcas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgMarcas.Margin = new System.Windows.Forms.Padding(4);
+            this.dgMarcas.MultiSelect = false;
             this.dgMarcas.Name = "dgMarcas";
             this.dgMarcas.ReadOnly = true;
             this.dgMarcas.RowHeadersWidth = 51;
@@ -95,11 +102,14 @@
             // 
             // dgCategorias
             // 
+            this.dgCategorias.AllowUserToResizeColumns = false;
+            this.dgCategorias.AllowUserToResizeRows = false;
             this.dgCategorias.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgCategorias.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dgCategorias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgCategorias.Location = new System.Drawing.Point(610, 322);
-            this.dgCategorias.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgCategorias.Margin = new System.Windows.Forms.Padding(4);
+            this.dgCategorias.MultiSelect = false;
             this.dgCategorias.Name = "dgCategorias";
             this.dgCategorias.ReadOnly = true;
             this.dgCategorias.RowHeadersWidth = 51;
@@ -121,7 +131,7 @@
             // 
             this.lbCategorias.AutoSize = true;
             this.lbCategorias.Font = new System.Drawing.Font("MS Reference Sans Serif", 16.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbCategorias.Location = new System.Drawing.Point(660, 283);
+            this.lbCategorias.Location = new System.Drawing.Point(654, 283);
             this.lbCategorias.Name = "lbCategorias";
             this.lbCategorias.Size = new System.Drawing.Size(177, 35);
             this.lbCategorias.TabIndex = 6;
@@ -133,7 +143,7 @@
             this.rdArticulos.Checked = true;
             this.rdArticulos.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdArticulos.Location = new System.Drawing.Point(194, 698);
-            this.rdArticulos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdArticulos.Margin = new System.Windows.Forms.Padding(4);
             this.rdArticulos.Name = "rdArticulos";
             this.rdArticulos.Size = new System.Drawing.Size(111, 30);
             this.rdArticulos.TabIndex = 7;
@@ -146,7 +156,7 @@
             this.rdMarcas.AutoSize = true;
             this.rdMarcas.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdMarcas.Location = new System.Drawing.Point(378, 698);
-            this.rdMarcas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdMarcas.Margin = new System.Windows.Forms.Padding(4);
             this.rdMarcas.Name = "rdMarcas";
             this.rdMarcas.Size = new System.Drawing.Size(93, 30);
             this.rdMarcas.TabIndex = 8;
@@ -158,7 +168,7 @@
             this.rdCategoria.AutoSize = true;
             this.rdCategoria.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdCategoria.Location = new System.Drawing.Point(538, 698);
-            this.rdCategoria.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdCategoria.Margin = new System.Windows.Forms.Padding(4);
             this.rdCategoria.Name = "rdCategoria";
             this.rdCategoria.Size = new System.Drawing.Size(130, 30);
             this.rdCategoria.TabIndex = 9;
@@ -178,7 +188,7 @@
             // btAgregar
             // 
             this.btAgregar.Location = new System.Drawing.Point(242, 749);
-            this.btAgregar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btAgregar.Margin = new System.Windows.Forms.Padding(4);
             this.btAgregar.Name = "btAgregar";
             this.btAgregar.Size = new System.Drawing.Size(395, 60);
             this.btAgregar.TabIndex = 11;
@@ -189,7 +199,7 @@
             // btModificar
             // 
             this.btModificar.Location = new System.Drawing.Point(242, 834);
-            this.btModificar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btModificar.Margin = new System.Windows.Forms.Padding(4);
             this.btModificar.Name = "btModificar";
             this.btModificar.Size = new System.Drawing.Size(395, 60);
             this.btModificar.TabIndex = 12;
@@ -200,7 +210,7 @@
             // btEliminar
             // 
             this.btEliminar.Location = new System.Drawing.Point(242, 917);
-            this.btEliminar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btEliminar.Margin = new System.Windows.Forms.Padding(4);
             this.btEliminar.Name = "btEliminar";
             this.btEliminar.Size = new System.Drawing.Size(395, 60);
             this.btEliminar.TabIndex = 13;
@@ -231,7 +241,7 @@
             // txtFiltroArticulo
             // 
             this.txtFiltroArticulo.Location = new System.Drawing.Point(348, 26);
-            this.txtFiltroArticulo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtFiltroArticulo.Margin = new System.Windows.Forms.Padding(4);
             this.txtFiltroArticulo.Name = "txtFiltroArticulo";
             this.txtFiltroArticulo.Size = new System.Drawing.Size(180, 22);
             this.txtFiltroArticulo.TabIndex = 16;
