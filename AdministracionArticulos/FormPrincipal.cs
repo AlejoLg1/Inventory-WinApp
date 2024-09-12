@@ -56,28 +56,59 @@ namespace AdministracionArticulos
 
         private void btModificar_Click(object sender, EventArgs e)
         {
-            if (rdArticulos.Checked)
+            try
             {
-                Articulo selectedArt;
-                selectedArt = (Articulo)dgArticulos.CurrentRow.DataBoundItem;
-                FormArticulo articulo = new FormArticulo(selectedArt);
-                articulo.ShowDialog();
+              if (rdArticulos.Checked)
+              {
+                  Articulo selectedArt;
+                  if (dgArticulos.CurrentRow != null)
+                  {
+                      selectedArt = (Articulo)dgArticulos.CurrentRow.DataBoundItem;
+                      FormArticulo articulo = new FormArticulo(selectedArt);
+                      articulo.ShowDialog();
+                  }else
+                  {
+                        MessageBox.Show("Ningún artículo seleccionado");
+                  }
+              }
+              else if (rdMarcas.Checked)
+              {
+                  Marca selectedMarca;
+                    if (dgArticulos.CurrentRow != null)
+                    {
+                      selectedMarca = (Marca)dgMarcas.CurrentRow.DataBoundItem;
+                      FormMarca marca = new FormMarca(selectedMarca);
+                      marca.ShowDialog();
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ningúna marca seleccionada");
+                    }
+              }
+              else
+              {
+                  Categoria selectedCat;
+                    if (dgCategorias.CurrentRow != null)
+                    {
+                      selectedCat = (Categoria)dgCategorias.CurrentRow.DataBoundItem;
+                      FormCategoria categoria = new FormCategoria(selectedCat);
+                      categoria.ShowDialog();
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ningúna categoría seleccionada");
+                    }
+              }
+              cargarGrids();
+
             }
-            else if (rdMarcas.Checked)
+            catch (Exception ex)
             {
-                Marca selectedMarca;
-                selectedMarca = (Marca)dgMarcas.CurrentRow.DataBoundItem;
-                FormMarca marca = new FormMarca(selectedMarca);
-                marca.ShowDialog();
+
+                MessageBox.Show(ex.ToString());
             }
-            else
-            {
-                Categoria selectedCat;
-                selectedCat = (Categoria)dgCategorias.CurrentRow.DataBoundItem;
-                FormCategoria categoria = new FormCategoria(selectedCat);
-                categoria.ShowDialog();
-            }
-            cargarGrids();
         }
 
         private void btEliminar_Click(object sender, EventArgs e)
@@ -239,15 +270,23 @@ namespace AdministracionArticulos
             ArticuloServices service = new ArticuloServices();
             Articulo selectedArt;
 
+
             try
             {
-                selectedArt = (Articulo)dgArticulos.CurrentRow.DataBoundItem;
-                DialogResult response = MessageBox.Show($"¿Éstá seguro de eliminar el Artículo '{selectedArt.Nombre}' con código '{selectedArt.Codigo}'?", "Eliminar Artículo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                if (response == DialogResult.Yes)
+                if (dgArticulos.CurrentRow != null)
                 {
-                    service.delete(selectedArt.Id);
-                    cargarGrids();
+                  selectedArt = (Articulo)dgArticulos.CurrentRow.DataBoundItem;
+                  DialogResult response = MessageBox.Show($"¿Éstá seguro de eliminar el Artículo '{selectedArt.Nombre}' con código '{selectedArt.Codigo}'?", "Eliminar Artículo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                  
+                  if (response == DialogResult.Yes)
+                  {
+                      service.delete(selectedArt.Id);
+                      cargarGrids();
+                  }
+                }
+                else
+                {
+                    MessageBox.Show("Ningún artículo seleccionado");
                 }
             }
             catch (Exception ex)
