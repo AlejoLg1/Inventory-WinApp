@@ -37,6 +37,12 @@ namespace AdministracionArticulos
                     categoria = new Categoria();
                 }
 
+                if(string.IsNullOrWhiteSpace(txtDescripcionCat.Text))
+                {
+                    MessageBox.Show("Debe ingresar una descripción para la categoría.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 categoria.Descripcion = txtDescripcionCat.Text;
                 
 
