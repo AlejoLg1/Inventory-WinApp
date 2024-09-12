@@ -206,12 +206,12 @@ namespace Services
 
             if (string.IsNullOrWhiteSpace(articulo.Codigo))
             {
-                resultados.Add(new ValidationResult("El código es obligatorio.", new[] { nameof(articulo.Codigo) }));
+                resultados.Add(new ValidationResult("Se debe especificar un código", new[] { nameof(articulo.Codigo) }));
             }
 
             if (string.IsNullOrWhiteSpace(articulo.Nombre))
             {
-                resultados.Add(new ValidationResult("El nombre es obligatorio.", new[] { nameof(articulo.Nombre) }));
+                resultados.Add(new ValidationResult("Se debe especificar un nombre", new[] { nameof(articulo.Nombre) }));
             }
 
             if (articulo.Precio <= 0)
@@ -219,6 +219,15 @@ namespace Services
                 resultados.Add(new ValidationResult("El precio debe ser mayor que cero.", new[] { nameof(articulo.Precio) }));
             }
 
+            if (articulo.Marca == null || string.IsNullOrWhiteSpace(articulo.Marca.Descripcion))
+            {
+                resultados.Add(new ValidationResult("Se debe especificar una marca.", new[] { nameof(articulo.Marca) }));
+            }
+
+            if (articulo.Categoria == null || string.IsNullOrWhiteSpace(articulo.Categoria.Descripcion))
+            {
+                resultados.Add(new ValidationResult("Se debe especificar una categoría.", new[] { nameof(articulo.Categoria) }));
+            }
             return resultados;
         }
     }
