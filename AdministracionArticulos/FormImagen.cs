@@ -139,6 +139,7 @@ namespace AdministracionArticulos
                 dgImagenes.DataSource = listImagen;
                 dgImagenes.Columns["Id"].Visible = false;
                 dgImagenes.Columns["IdArticulo"].Visible = false;
+                txtUrlImagen.Text = "";
                 AjustarDgView(dgImagenes, 5);
 
                 if (listImagen.Count > 0)
