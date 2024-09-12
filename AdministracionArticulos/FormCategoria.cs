@@ -43,6 +43,12 @@ namespace AdministracionArticulos
                     return;
                 }
 
+                if (!txtDescripcionCat.Text.All(char.IsLetter))
+                {
+                    MessageBox.Show("Ingrese solo letras en la descripción.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 categoria.Descripcion = txtDescripcionCat.Text;
                 
 
