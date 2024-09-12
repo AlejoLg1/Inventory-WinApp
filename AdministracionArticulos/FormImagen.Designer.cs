@@ -41,6 +41,8 @@
             // 
             // dgImagenes
             // 
+            this.dgImagenes.AllowUserToResizeColumns = false;
+            this.dgImagenes.AllowUserToResizeRows = false;
             this.dgImagenes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgImagenes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgImagenes.Location = new System.Drawing.Point(12, 24);

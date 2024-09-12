@@ -159,22 +159,42 @@ namespace AdministracionArticulos
         {
             try
             {
-                ArticuloServices articuloService = new ArticuloServices();
-                Articulo articuloSeleccionado = (Articulo)dgArticulos.CurrentRow.DataBoundItem;
-                listImagenes = articuloService.listarImagenes(articuloSeleccionado.Codigo);
-                if (listImagenes.Count > 0)
-                {
-                    nudImagenesArticulos.Maximum = listImagenes.Count - 1;
-                    uploadImage(listImagenes[(int)nudImagenesArticulos.Value]);
+                if (dgArticulos.CurrentRow != null && dgArticulos.CurrentRow.DataBoundItem != null)
+                { 
+                    ArticuloServices articuloService = new ArticuloServices();
+                    Articulo articuloSeleccionado = (Articulo)dgArticulos.CurrentRow.DataBoundItem;
+                    
+                    if (articuloSeleccionado != null)
+                    {
+                        listImagenes = articuloService.listarImagenes(articuloSeleccionado.Codigo);
+                        if (listImagenes.Count > 0)
+                        {
+                            nudImagenesArticulos.Maximum = listImagenes.Count - 1;
+                            uploadImage(listImagenes[(int)nudImagenesArticulos.Value]);
+                        }
+                        else
+                        {
+                            uploadImage("DefaultImage");
+                            nudImagenesArticulos.Maximum = 0;
+                        }
+                    }
+                    else
+                    {
+                        uploadImage("DefaultImage");
+                        nudImagenesArticulos.Maximum = 0;
+                    }
                 }
                 else
                 {
                     uploadImage("DefaultImage");
+                    nudImagenesArticulos.Maximum = 0;
                 }
+
+
             }
             catch (Exception ex)
             {
-                throw ex;
+                MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
@@ -360,7 +380,13 @@ namespace AdministracionArticulos
 
             if (filtro != "")
             {
-             listaFiltrada = listArticulos.FindAll(art => art.Nombre.ToLower().Contains(filtro.ToLower()) || art.Categoria.ToString().ToLower().Contains(filtro.ToLower()) || art.Marca.ToString().ToLower().Contains(filtro.ToLower()));
+             listaFiltrada = listArticulos.FindAll(
+                 art =>
+                 art.Codigo.ToLower().Contains(filtro.ToLower()) ||
+                 art.Nombre.ToLower().Contains(filtro.ToLower()) ||
+                 art.Categoria.ToString().ToLower().Contains(filtro.ToLower()) ||
+                 art.Marca.ToString().ToLower().Contains(filtro.ToLower())
+                 );
 
             }
             else
@@ -372,7 +398,50 @@ namespace AdministracionArticulos
             dgArticulos.DataSource = null;
             dgArticulos.DataSource = listaFiltrada;
             hideColumns();
+
         }
 
+        private void dgArticulos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (dgArticulos.CurrentRow != null && dgArticulos.CurrentRow.DataBoundItem != null)
+                {
+                    ArticuloServices articuloService = new ArticuloServices();
+                    Articulo articuloSeleccionado = (Articulo)dgArticulos.CurrentRow.DataBoundItem;
+
+                    if (articuloSeleccionado != null)
+                    {
+                        listImagenes = articuloService.listarImagenes(articuloSeleccionado.Codigo);
+                        if (listImagenes.Count > 0)
+                        {
+                            nudImagenesArticulos.Maximum = listImagenes.Count - 1;
+                            uploadImage(listImagenes[(int)nudImagenesArticulos.Value]);
+                        }
+                        else
+                        {
+                            uploadImage("DefaultImage");
+                            nudImagenesArticulos.Maximum = 0;
+                        }
+                    }
+                    else
+                    {
+                        uploadImage("DefaultImage");
+                        nudImagenesArticulos.Maximum = 0;
+                    }
+                }
+                else
+                {
+                    uploadImage("DefaultImage");
+                    nudImagenesArticulos.Maximum = 0;
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

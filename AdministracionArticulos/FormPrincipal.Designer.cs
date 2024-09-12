@@ -80,6 +80,7 @@
             this.dgArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgArticulos.Size = new System.Drawing.Size(859, 177);
             this.dgArticulos.TabIndex = 2;
+            this.dgArticulos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgArticulos_CellClick);
             this.dgArticulos.SelectionChanged += new System.EventHandler(this.dgArticulos_SelectionChanged);
             // 
             // dgMarcas
