@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.ComponentModel.DataAnnotations;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Xml.Linq;
 using Models;
 using Utils;
@@ -50,6 +53,7 @@ namespace Services
         {
             try
             {
+                dato.clearParameters();
                 dato.setQuery("INSERT into CATEGORIAS (Descripcion) values(@Descripcion)");
                 dato.setParameter("@Descripcion", NewCategoria.Descripcion);
 
@@ -57,8 +61,7 @@ namespace Services
             }
             catch (Exception ex)
             {
-
-                throw ex;
+                MessageBox.Show("Error al agregar Categoría. Comuníquese con el Soporte.", "FATAL ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -70,6 +73,7 @@ namespace Services
         {
             try
             {
+                dato.clearParameters();
                 dato.setQuery("UPDATE CATEGORIAS set Descripcion = @Descripcion where id = @Id");
                 dato.setParameter("@Descripcion", categoria.Descripcion);
                 dato.setParameter("@Id", categoria.Id);
@@ -79,7 +83,7 @@ namespace Services
             catch (Exception ex)
             {
 
-                throw ex;
+                MessageBox.Show("Error al modificar Categoría. Comuníquese con el Soporte.", "FATAL ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -91,6 +95,7 @@ namespace Services
         {
             try
             {
+              dato.clearParameters();
               dato.setQuery("DELETE from CATEGORIAS where id = @Id");
               dato.setParameter("@Id",Id);
 
@@ -98,8 +103,7 @@ namespace Services
             }
             catch (Exception ex)
             {
-
-                throw ex;
+                MessageBox.Show("Error al eliminar Categoría. Comuníquese con el Soporte.", "FATAL ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -131,6 +135,49 @@ namespace Services
             {
                 dato.CloseConnection();
             }
+        }
+
+        public bool repeatedDescripcion(string descripcion)
+        {
+            try
+            {
+                bool response = false;
+                dato.setQuery("Select Descripcion from CATEGORIAS where Descripcion = @Descripcion");
+                dato.setParameter("@Descripcion", descripcion);
+                dato.excecuteQuery();
+
+                if (dato.Reader.Read())
+                {
+                    response = true;
+                }
+
+                return response;
+            }
+            catch (Exception ex)
+            {
+                return true;
+            }
+            finally
+            {
+                dato.CloseConnection();
+            }
+        }
+
+        public IEnumerable<ValidationResult> ValidateTypes(Categoria categoria)
+        {
+            var resultados = new List<ValidationResult>();
+
+            if (string.IsNullOrWhiteSpace(categoria.Descripcion))
+            {
+                resultados.Add(new ValidationResult("Se debe especificar una Descripción", new[] { nameof(categoria.Descripcion) }));
+            }
+
+            if (!categoria.Descripcion.All(char.IsLetter))
+            {
+                resultados.Add(new ValidationResult("Ingrese solo letras en la Descripción.", new[] { nameof(categoria.Descripcion) }));
+            }
+
+            return resultados;
         }
     }
 }

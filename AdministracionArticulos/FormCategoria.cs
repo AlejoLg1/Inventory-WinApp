@@ -38,47 +38,36 @@ namespace AdministracionArticulos
                     categoria = new Categoria();
                 }
 
-                if(string.IsNullOrWhiteSpace(txtDescripcionCat.Text))
-                {
-                    MessageBox.Show("Debe ingresar una descripción para la categoría.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                if (!txtDescripcionCat.Text.All(char.IsLetter))
-                {
-                    MessageBox.Show("Ingrese solo letras en la descripción.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                if (categoria.Id == 0 || !txtDescripcionCat.Text.Equals(categoria.Descripcion, StringComparison.OrdinalIgnoreCase))
-                {
-                    if (service.ExistsName(txtDescripcionCat.Text))
-                    {
-                        MessageBox.Show("Ya existe una categoría con ese nombre.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
-                }
-
-
                 categoria.Descripcion = txtDescripcionCat.Text;
-                
 
-                if (categoria.Id != 0)
+                if (ErrorsInFields(service) == false)
                 {
-                    service.modify(categoria);
-                    MessageBox.Show("Categoria modificada exitosamente");
-                }
-                else
-                {
-                    service.add(categoria);
-                    MessageBox.Show("Categoria agregada exitosamente");
+                    if (categoria.Id != 0 && !service.repeatedDescripcion(categoria.Descripcion))
+                    {
+                        service.modify(categoria);
+                        MessageBox.Show("Categoría modificada exitosamente");
+                        Close();
+                    }
+                    else
+                    {
+                        if (!service.repeatedDescripcion(categoria.Descripcion))
+                        {
+                            service.add(categoria);
+                            MessageBox.Show("Categoría agregada exitosamente");
+                            Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Error: Descripción de categoría repetida\n", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+
                 }
 
-                Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                ErrorsInFields(service);
             }
         }
 
@@ -111,6 +100,31 @@ namespace AdministracionArticulos
 
         }
 
+        private bool ErrorsInFields(CategoriaServices service)
+        {
+            try
+            {
+                bool response = false;
+                var resultadosValidacion = service.ValidateTypes(categoria);
+
+                foreach (var resultado in resultadosValidacion)
+                {
+                    MessageBox.Show(resultado.ErrorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+
+                if (resultadosValidacion.Any())
+                {
+                    response = true;
+                }
+
+                return response;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Verifique los datos cargados.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return true;
+            }
+        }
         private void FormCategoria_Load(object sender, EventArgs e)
         {
             cargar();
