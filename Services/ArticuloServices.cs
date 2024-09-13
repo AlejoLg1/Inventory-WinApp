@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Models;
 using Utils;
 using System.ComponentModel.DataAnnotations;
+using System.Windows.Forms;
 
 namespace Services
 {
@@ -109,6 +110,7 @@ namespace Services
         {
             try
             {
+                DB.clearParameters();
                 DB.setQuery("Insert into ARTICULOS (Codigo, Nombre, Descripcion, IdMarca, IdCategoria, Precio) values (@Codigo, @Nombre, @Descripcion, @IdMarca, @IdCategoria, @Precio)");
 
                 DB.setParameter("@Codigo", newArticulo.Codigo);
@@ -122,7 +124,7 @@ namespace Services
             }
             catch (Exception ex)
             {
-                throw ex;
+                MessageBox.Show("Error al agregar Artículo. Comuníquese con el Soporte.", "FATAL ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -134,6 +136,7 @@ namespace Services
         {
             try
             {
+                DB.clearParameters();
                 DB.setQuery("Update ARTICULOS set Codigo = @Codigo, Nombre = @Nombre, Descripcion = @Descripcion, IdMarca = @IdMarca, IdCategoria = @IdCategoria, Precio = @precio Where Id = @Id");
 
                 DB.setParameter("@Codigo", articulo.Codigo);
@@ -148,7 +151,7 @@ namespace Services
             }
             catch (Exception ex)
             {
-                throw ex;
+                MessageBox.Show("Error al modificar Artículo. Comuníquese con el Soporte.", "FATAL ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -160,13 +163,14 @@ namespace Services
         {
             try
             {
+                DB.clearParameters();
                 DB.setQuery("Delete from ARTICULOS where Id = @Id");
                 DB.setParameter("@Id", Id);
                 DB.excecuteAction();
             }
             catch (Exception ex)
             {
-                throw ex;
+                MessageBox.Show("Error al eliminar Artículo. Comuníquese con el Soporte.", "FATAL ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
