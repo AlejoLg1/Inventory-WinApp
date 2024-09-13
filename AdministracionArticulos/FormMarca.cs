@@ -46,7 +46,7 @@ namespace AdministracionArticulos
 
                 if (ErrorsInFields(service) == false)
                 {
-                    if (marca.Id != 0)
+                    if (marca.Id != 0 && !service.repeatedDescripcion(marca.Descripcion))
                     {
                         service.modify(marca);
                         MessageBox.Show("Marca modificado exitosamente");
@@ -57,6 +57,7 @@ namespace AdministracionArticulos
                         if (!service.repeatedDescripcion(marca.Descripcion))
                         {
                             service.add(marca);
+                            MessageBox.Show("Marca agregada exitosamente");
                             Close();
                         }
                         else
@@ -110,7 +111,7 @@ namespace AdministracionArticulos
 
                 foreach (var resultado in resultadosValidacion)
                 {
-                    MessageBox.Show(resultado.ErrorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(resultado.ErrorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
 
                 if (resultadosValidacion.Any())

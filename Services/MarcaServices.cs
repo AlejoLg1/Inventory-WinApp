@@ -66,6 +66,7 @@ namespace Services
           {
               try
               {
+                  dato.clearParameters();
                   dato.setQuery("UPDATE MARCAS set Descripcion = @Descripcion where id = @Id");
                   dato.setParameter("@Descripcion", marca.Descripcion);
                   dato.setParameter("@Id", marca.Id);
@@ -87,6 +88,7 @@ namespace Services
           {
               try
               {
+                  dato.clearParameters();
                   dato.setQuery("DELETE from MARCAS where id = @Id");
                   dato.setParameter("@Id", Id);
 
@@ -95,7 +97,7 @@ namespace Services
               catch (Exception ex)
               {
 
-                MessageBox.Show("Error al borrar Marca. Comuníquese con el Soporte.", "FATAL ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error al eliminar Marca. Comuníquese con el Soporte.", "FATAL ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
               finally
               {
