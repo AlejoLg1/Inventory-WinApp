@@ -14,7 +14,7 @@ La aplicación incluye las siguientes funcionalidades:
 - **Agregar artículos**: Opción para añadir nuevos artículos al catálogo.
 - **Modificar artículos**: Permite editar la información de los artículos existentes.
 - **Eliminar artículos**: Opción para eliminar artículos del catálogo.
-- **Ver detalle de un artículo**: Muestra información detallada sobre un artículo específico.
+- **Gestionar Imágenes**: Permite gestionar las imágenes correspondientes a los artículos del catálogo.
 
 ### Gestión de Marcas
 - **Agregar marcas**: Opción para añadir nuevas marcas al sistema.
