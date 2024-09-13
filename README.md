@@ -39,9 +39,11 @@ La aplicación incluye las siguientes funcionalidades:
 
 3. Abre la solución en el IDE.
 
-4. **Compila la solución**: En el IDE, selecciona la opción para compilar la solución. Esto asegurará que todos los archivos se construyan correctamente.
+4. Inicializa tu variable **connectionString** dentro del archivo *App.config*. Esto permitirá conectar la aplicación con tu BDD.
 
-5. **Ejecuta la aplicación**: Después de compilar, ejecuta la aplicación desde el IDE.
+5. **Compila la solución**: En el IDE, selecciona la opción para compilar la solución. Esto asegurará que todos los archivos se construyan correctamente.
 
-6.  ¡Prueba sus funcionalidades!
+6. **Ejecuta la aplicación**: Después de compilar, ejecuta la aplicación desde el IDE.
+
+7.  ¡Prueba sus funcionalidades!
 
