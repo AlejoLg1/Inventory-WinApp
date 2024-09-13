@@ -34,53 +34,42 @@ namespace AdministracionArticulos
         private void BtnAgregar_Click(object sender, EventArgs e)
         {
             MarcaServices service = new MarcaServices();
-
-                if (string.IsNullOrWhiteSpace(TxtBoxDescripcion.Text))
-                {
-                    MessageBox.Show("Debe ingresar una descripción para la Marca.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                if (!TxtBoxDescripcion.Text.All(char.IsLetter))
-                {
-                    MessageBox.Show("Ingrese solo letras en la Marca.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
+            
             try
             {
                 if (marca == null)
                 {
                     marca = new Marca();
                 }
-                
-                if ((marca.Id == 0 || !TxtBoxDescripcion.Text.Equals(marca.Descripcion, StringComparison.OrdinalIgnoreCase)))
-                {
-                    if (service.ExistsName(TxtBoxDescripcion.Text))
-                    {
-                       MessageBox.Show("Ya existe una marca con ese nombre.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                       return;
-                    }
-                }
-                
+
                 marca.Descripcion = TxtBoxDescripcion.Text;
 
-                if (marca.Id != 0)
+                if (ErrorsInFields(service) == false)
                 {
-                    service.modify(marca);
-                    MessageBox.Show("Marca modificado exitosamente");
-                }
-                else
-                {
-                    service.add(marca);
-                    MessageBox.Show("Marca agregado exitosamente");
-                }
+                    if (marca.Id != 0)
+                    {
+                        service.modify(marca);
+                        MessageBox.Show("Marca modificado exitosamente");
+                        Close();
+                    }
+                    else
+                    {
+                        if (!service.repeatedDescripcion(marca.Descripcion))
+                        {
+                            service.add(marca);
+                            Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Error: Descripción de marca repetida\n", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
 
-                Close();
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                ErrorsInFields(service);
             }
         }
 
@@ -109,6 +98,32 @@ namespace AdministracionArticulos
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private bool ErrorsInFields(MarcaServices service)
+        {
+            try
+            {
+                bool response = false;
+                var resultadosValidacion = service.ValidateTypes(marca);
+
+                foreach (var resultado in resultadosValidacion)
+                {
+                    MessageBox.Show(resultado.ErrorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                if (resultadosValidacion.Any())
+                {
+                    response = true;
+                }
+
+                return response;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Verifique los datos cargados.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return true;
             }
         }
 

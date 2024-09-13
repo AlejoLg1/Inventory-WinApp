@@ -74,7 +74,7 @@ namespace AdministracionArticulos
               else if (rdMarcas.Checked)
               {
                   Marca selectedMarca;
-                    if (dgArticulos.CurrentRow != null)
+                    if (dgMarcas.CurrentRow != null)
                     {
                       selectedMarca = (Marca)dgMarcas.CurrentRow.DataBoundItem;
                       FormMarca marca = new FormMarca(selectedMarca);

@@ -1,9 +1,11 @@
 ﻿using Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using Utils;
 
 namespace Services
@@ -45,15 +47,14 @@ namespace Services
           {
               try
               {
+                  dato.clearParameters();
                   dato.setQuery("INSERT into MARCAS (Descripcion) values(@Descripcion)");
                   dato.setParameter("@Descripcion", newMarca.Descripcion);
-
                   dato.excecuteAction();
               }
               catch (Exception ex)
               {
-
-                  throw ex;
+                MessageBox.Show("Error al agregar Marca. Comuníquese con el Soporte.", "FATAL ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
               }
               finally
               {
@@ -74,8 +75,8 @@ namespace Services
               catch (Exception ex)
               {
 
-                  throw ex;
-              }
+                MessageBox.Show("Error al modificar Marca. Comuníquese con el Soporte.", "FATAL ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
               finally
               {
                   dato.CloseConnection();
@@ -94,38 +95,55 @@ namespace Services
               catch (Exception ex)
               {
 
-                  throw ex;
-              }
+                MessageBox.Show("Error al borrar Marca. Comuníquese con el Soporte.", "FATAL ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
               finally
               {
                   dato.CloseConnection();
               }
           }
 
-        public bool ExistsName(string descripcion)
+        public bool repeatedDescripcion(string descripcion)
         {
             try
             {
-                dato.setQuery("SELECT COUNT(*) FROM MARCAS WHERE Descripcion = @Descripcion");
+                bool response = false;
+                dato.setQuery("Select Descripcion from MARCAS where Descripcion = @Descripcion");
                 dato.setParameter("@Descripcion", descripcion);
                 dato.excecuteQuery();
-
+                   
                 if (dato.Reader.Read())
                 {
-                    int count = dato.Reader.GetInt32(0);
-                    return count > 0;
+                    response = true;
                 }
 
-                return false;
+                return response;
             }
             catch (Exception ex)
             {
-                throw ex;
+                return true;
             }
             finally
             {
                 dato.CloseConnection();
             }
+        }
+
+        public IEnumerable<ValidationResult> ValidateTypes(Marca marca)
+        {
+            var resultados = new List<ValidationResult>();
+
+            if (string.IsNullOrWhiteSpace(marca.Descripcion))
+            {
+                resultados.Add(new ValidationResult("Se debe especificar una Descripción", new[] { nameof(marca.Descripcion) }));
+            }
+
+            if (!marca.Descripcion.All(char.IsLetter))
+            {
+                resultados.Add(new ValidationResult("Ingrese solo letras en la Descripción.", new[] { nameof(marca.Descripcion) }));
+            }
+
+            return resultados;
         }
 
     }
