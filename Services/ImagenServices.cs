@@ -48,6 +48,7 @@ namespace Services
         {
             try
             {
+                DB.clearParameters();
                 DB.setQuery("Insert into IMAGENES (IdArticulo, ImagenUrl) values (@IdArticulo, @ImagenUrl)");
                 DB.setParameter("@IdArticulo", NewImagen.IdArticulo);
                 DB.setParameter("@ImagenUrl", NewImagen.ImagenUrl);
@@ -69,6 +70,7 @@ namespace Services
         {
             try
             {
+                DB.clearParameters();
                 DB.setQuery("DELETE from IMAGENES where id = @Id");
                 DB.setParameter("@Id", imagen.Id);
 
