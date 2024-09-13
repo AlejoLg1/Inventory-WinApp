@@ -78,5 +78,10 @@ namespace Utils
             }
             connection.Close();
         }
+
+        public void clearParameters()
+        {
+            command.Parameters.Clear();
+        }
     }
 }
