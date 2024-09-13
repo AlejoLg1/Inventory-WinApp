@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -48,6 +49,16 @@ namespace AdministracionArticulos
                     MessageBox.Show("Ingrese solo letras en la descripción.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
+
+                if (categoria.Id == 0 || !txtDescripcionCat.Text.Equals(categoria.Descripcion, StringComparison.OrdinalIgnoreCase))
+                {
+                    if (service.ExistsName(txtDescripcionCat.Text))
+                    {
+                        MessageBox.Show("Ya existe una categoría con ese nombre.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                }
+
 
                 categoria.Descripcion = txtDescripcionCat.Text;
                 

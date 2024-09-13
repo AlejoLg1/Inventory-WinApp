@@ -106,5 +106,31 @@ namespace Services
                 dato.CloseConnection();
             }
         }
+
+        public bool ExistsName(string descripcion)
+        {
+            try
+            {
+                dato.setQuery("SELECT COUNT(*) FROM CATEGORIAS WHERE Descripcion = @Descripcion");
+                dato.setParameter("@Descripcion", descripcion);
+                dato.excecuteQuery();
+
+                if (dato.Reader.Read())
+                {
+                    int count = dato.Reader.GetInt32(0);
+                    return count > 0;
+                }
+
+                return false;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                dato.CloseConnection();
+            }
+        }
     }
 }

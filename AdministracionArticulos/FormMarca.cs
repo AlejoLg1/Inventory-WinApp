@@ -35,14 +35,6 @@ namespace AdministracionArticulos
         {
             MarcaServices service = new MarcaServices();
 
-            try
-            {
-                if (marca == null)
-                {
-                    marca = new Marca();
-                }
-
-
                 if (string.IsNullOrWhiteSpace(TxtBoxDescripcion.Text))
                 {
                     MessageBox.Show("Debe ingresar una descripción para la Marca.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -55,12 +47,22 @@ namespace AdministracionArticulos
                     return;
                 }
 
-                if (service.ExistsName(TxtBoxDescripcion.Text) && (marca.Id == 0 || !TxtBoxDescripcion.Text.Equals(marca.Descripcion, StringComparison.OrdinalIgnoreCase)))
+            try
+            {
+                if (marca == null)
                 {
-                    MessageBox.Show("Ya existe una marca con ese nombre.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
+                    marca = new Marca();
                 }
-
+                
+                if ((marca.Id == 0 || !TxtBoxDescripcion.Text.Equals(marca.Descripcion, StringComparison.OrdinalIgnoreCase)))
+                {
+                    if (service.ExistsName(TxtBoxDescripcion.Text))
+                    {
+                       MessageBox.Show("Ya existe una marca con ese nombre.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                       return;
+                    }
+                }
+                
                 marca.Descripcion = TxtBoxDescripcion.Text;
 
                 if (marca.Id != 0)
