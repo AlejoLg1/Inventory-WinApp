@@ -172,7 +172,7 @@ namespace Services
                 resultados.Add(new ValidationResult("Se debe especificar una Descripción", new[] { nameof(categoria.Descripcion) }));
             }
 
-            if (!categoria.Descripcion.All(char.IsLetter))
+            if (!categoria.Descripcion.All(c => char.IsLetter(c) || char.IsWhiteSpace(c)))
             {
                 resultados.Add(new ValidationResult("Ingrese solo letras en la Descripción.", new[] { nameof(categoria.Descripcion) }));
             }

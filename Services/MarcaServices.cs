@@ -140,7 +140,7 @@ namespace Services
                 resultados.Add(new ValidationResult("Se debe especificar una Descripción", new[] { nameof(marca.Descripcion) }));
             }
 
-            if (!marca.Descripcion.All(char.IsLetter))
+            if (!marca.Descripcion.All(c => char.IsLetter(c) || char.IsWhiteSpace(c)))
             {
                 resultados.Add(new ValidationResult("Ingrese solo letras en la Descripción.", new[] { nameof(marca.Descripcion) }));
             }
