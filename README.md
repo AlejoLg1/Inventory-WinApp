@@ -1,49 +1,49 @@
-# Gestión de Artículos de Catálogo
+# Catalog Item Management
 
-## Descripción
+## Description
 
-Esta aplicación de escritorio permite la gestión de artículos de un catálogo de un comercio. Es una solución genérica que puede adaptarse a cualquier tipo de comercio, permitiendo que la información cargada sea consumida posteriormente por distintos servicios, incluyendo sitios web, e-commerce, aplicaciones móviles, revistas, entre otros.
+This desktop application enables the management of catalog items for a business. It is a generic solution that can be adapted to any type of business, allowing the stored information to be later consumed by various services, including websites, e-commerce platforms, mobile applications, magazines, and more.
 
-## Funcionalidades
+## Features
 
-La aplicación incluye las siguientes funcionalidades:
+The application includes the following functionalities:
 
-### Gestión de Artículos
-- **Listado de artículos**: Muestra todos los artículos disponibles en el catálogo.
-- **Búsqueda de artículos**: Permite buscar artículos utilizando su nombre.
-- **Agregar artículos**: Opción para añadir nuevos artículos al catálogo.
-- **Modificar artículos**: Permite editar la información de los artículos existentes.
-- **Eliminar artículos**: Opción para eliminar artículos del catálogo.
-- **Gestionar Imágenes**: Permite gestionar las imágenes correspondientes a los artículos del catálogo.
+### Item Management
+- **Item Listing**: Displays all available catalog items.
+- **Item Search**: Allows searching for items by name.
+- **Add Items**: Option to add new items to the catalog.
+- **Modify Items**: Allows editing information of existing items.
+- **Delete Items**: Option to remove items from the catalog.
+- **Manage Images**: Enables managing images associated with catalog items.
 
-### Gestión de Marcas
-- **Agregar marcas**: Opción para añadir nuevas marcas al sistema.
-- **Modificar marcas**: Permite editar la información de las marcas existentes.
-- **Eliminar marcas**: Opción para eliminar marcas del sistema.
+### Brand Management
+- **Add Brands**: Option to add new brands to the system.
+- **Modify Brands**: Allows editing information of existing brands.
+- **Delete Brands**: Option to remove brands from the system.
 
-### Gestión de Categorías
-- **Agregar categorías**: Opción para añadir nuevas categorías al sistema.
-- **Modificar categorías**: Permite editar la información de las categorías existentes.
-- **Eliminar categorías**: Opción para eliminar categorías del sistema.
+### Category Management
+- **Add Categories**: Option to add new categories to the system.
+- **Modify Categories**: Allows editing information of existing categories.
+- **Delete Categories**: Option to remove categories from the system.
 
-## Requisitos
+## Requirements
 - .NET Framework 
 
-## Instalación
+## Installation
 
-1. Clona el repositorio:
+1. Clone the repository:
    ```bash
-   git clone https://github.com/tu-usuario/gestion-articulos.git
+   git clone https://github.com/your-username/catalog-management.git
    
-2. Abre tu IDE de C# (por ejemplo, Visual Studio o Visual Studio Code).
+2. Open your C# IDE (e.g., Visual Studio or Visual Studio Code).
 
-3. Abre la solución en el IDE.
+3. Open the solution in the IDE.
 
-4. Inicializa tu variable **connectionString** dentro del archivo *App.config*. Esto permitirá conectar la aplicación con tu BDD.
+4. Initialize your connectionString variable inside the App.config file. This will allow the application to connect to your database.
 
-5. **Compila la solución**: En el IDE, selecciona la opción para compilar la solución. Esto asegurará que todos los archivos se construyan correctamente.
+5. **Compile the solution**: In the IDE, select the option to compile the solution. This will ensure that all files are built correctly.
+   
+6. **Run the application**: After compiling, run the application from the IDE.
 
-6. **Ejecuta la aplicación**: Después de compilar, ejecuta la aplicación desde el IDE.
-
-7.  ¡Prueba sus funcionalidades!
+7.  Test its functionalities!
 
