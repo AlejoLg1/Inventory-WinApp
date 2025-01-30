@@ -47,3 +47,8 @@ The application includes the following functionalities:
 
 7.  Test its functionalities!
 
+## Screenshots
+
+![Screenshot 1](images/screenshot1.png)
+![Screenshot 2](images/screenshot2.png)
+
